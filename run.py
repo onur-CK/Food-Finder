@@ -1,9 +1,20 @@
 
-cuisine_preference = input("What cuisine would you like to try? Turkish or Chinese? ")
-print(f"You selected {cuisine_preference} cuisine. ")
 
 
+def get_cuisine_choice():
+    """Gets the user input for cuisine with validation."""
+    valid_cuisines = ["Chinese", "Turkish"]
+    valid_cuisines_lower = [choice.lower() for choice in valid_cuisines]
+    
+    while True:
+        cuisine_choice = input("What cuisine would you like to try? Turkish or Chinese? ").lower()
+        if cuisine_choice in valid_cuisines_lower:
+            return cuisine_choice
+        else:
+            print(f"Invalid choice. Please enter 'Chinese or Turkish'.")
 
+cuisine_preference = get_cuisine_choice()
+print(f"You selected {cuisine_preference} cuisine.")
 
 
 
