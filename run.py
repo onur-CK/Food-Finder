@@ -1,6 +1,14 @@
-# Your code goes here.
-# You can delete these comments, but do not change the name of this file
-# Write your code to expect a terminal of 80 characters wide and 24 rows high
+
+cuisine_preference = input("What cuisine would you like to try? Turkish or Chinese? ")
+print(f"You selected {cuisine_preference} cuisine. ")
+
+
+
+
+
+
+
+
 
 
 def food_advice(cuisine, food_type):
@@ -10,7 +18,7 @@ def food_advice(cuisine, food_type):
             "Vegetarian": {
                 "Rice": {
                     "Fried Rice": ["Yangzhou fried rice", "Vegetable lo mein, Spicy tofu fried rice"],
-                    "Soup and Rice Noodles": ["Buddha's delight", "Mapo tofu rice bowl", "Spicy eggplant with rice."],
+                    "Soup and Rice Noodles": ["Buddha's delight", "Mapo tofu rice bowl", "Spicy eggplant with rice"],
                 "Noodle": {
                     "Spicy": ["Sichuan dan dan noodles", "Spicy tofu noodle soup", "Spicy zha jiang mian"],
                     "Classic Savory": ["Sesame noodle salad(Liang mian)", "Vegetable lo mein", "Wombock noodle soup"]
@@ -36,7 +44,7 @@ def food_advice(cuisine, food_type):
                     "Savory Fritters and Pancakes": ["Mucver", "Gozleme", "Cigar boreks"],
                 "Lentil and Chickpea": {
                     "Stew and soups": ["Lentil soup", "Chickpea stew", "Zucchini fritter soup"],
-                    "Salads and colds": ["Chichkea salad", "Lentil salad", "White bean salad"],
+                    "Salads and colds": ["Chichkpea salad", "Lentil salad", "White bean salad"],
             "Non-Vegetarian": {
                 "Sea Food": {
                     "Fresh fish dishes": ["Levrek izgara(seabass)", "Hamsili Pilav", "Alinazik with shrimp"],
@@ -60,6 +68,6 @@ def food_advice(cuisine, food_type):
         }
      }
     } 
-    print(f"{suggestions}")
+    #print(f"{suggestions}")
 
 food_advice("Chinese, Turkish", "Vegetarian, Non-Vegetarian")
