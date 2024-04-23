@@ -17,8 +17,30 @@ def get_cuisine_choice():
         else:
             print("Invalid choice. Please enter 1 or 2.")
 
+          
 
-get_cuisine_choice()
+def get_food_type():
+    """Get the user preference for Vegetarian or Non-Vegetarian dishes."""
+    vegetarian_choice = None # Prepares the variable to store the user's choice for vegetarian or non-vegetarian dishes.
+
+    while vegetarian_choice not in ("1", "2"):
+        vegetarian_choice = input("Do you prefer Vegetarian dishes (1) or \nNon-Vegetarian (2) dishes? ")
+        if vegetarian_choice not in ("1", "2"):
+            print("Invalid choice. Please enter 1 or 2. ")
+    
+    # Store user choice in a dictionary and return.
+    user_preferences = {"food_type": ("Vegetarian" if vegetarian_choice == "1" else "Non-Vegetarian")}
+    return user_preferences
+
+
+
+
+cuisine_preference = get_cuisine_choice()
+print(f"You selected {cuisine_preference} cuisine.")
+
+food_preferences = get_food_type() # Call function to store the returned dictionary.
+
+
 
 
 
@@ -89,4 +111,4 @@ def food_advice(cuisine, food_type):
     } 
     #print(f"{suggestions}")
 
-food_advice("Chinese, Turkish", "Vegetarian, Non-Vegetarian")
+#food_advice("Chinese, Turkish", "Vegetarian, Non-Vegetarian")
