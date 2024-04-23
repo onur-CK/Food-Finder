@@ -24,15 +24,48 @@ def get_food_type():
     vegetarian_choice = None # Prepares the variable to store the user's choice for vegetarian or non-vegetarian dishes.
 
     while vegetarian_choice not in ("1", "2"):
-        vegetarian_choice = input("Do you prefer Vegetarian dishes (1) or \nNon-Vegetarian (2) dishes? ")
+        print("Select your preferred food type:")
+        print("1. Vegetarian")
+        print("2. Non-Vegetarian")
+        
+        vegetarian_choice = input("Enter your choice (1 or 2) ")
         if vegetarian_choice not in ("1", "2"):
             print("Invalid choice. Please enter 1 or 2. ")
-    
+    else: 
+        return {"food_type": ("Vegetarian" if vegetarian_choice== "1" else "Non-Vegetarian")} 
     # Store user choice in a dictionary and return.
     user_preferences = {"food_type": ("Vegetarian" if vegetarian_choice == "1" else "Non-Vegetarian")}
     return user_preferences
 
 
+def get_chinese_vegetarian_choice():
+    """Gets the user's preferred base (Rice or Noodle) for Vegetarian dishes in Chinese cuisine."""
+    while True:
+        print("For your Vegetarian Chinese dish, would you prefer:")
+        print("1. Rice")
+        print("2. Noodles")
+
+        base_choice = input("Enter your choice (1 or 2): ")
+        if base_choice not in ("1", "2"):
+            print("Invalid choice. Please enter 1 or 2.")
+        else: 
+            return "Rice" if base_choice == "1" else "Noodle"
+
+def get_chinese_non_vegetarian_choice():
+    """Gets the user's preferred protein for Non-Vegetarian dishes in Chinese cuisine."""
+    while True:
+        print("For your Non-Vegetarian Chinese dish, would you prefer: ")
+        print("1. Sea Food")
+        print("2. Red Meat")
+        print("3. Chicken")
+
+        protein_choice = input("Enter your choice (1, 2 or 3): ")
+        if protein_choice not in ("1", "2", "3"):
+            print("Invalid choice. Please enter 1, 2, or 3")
+        else: 
+            return "Sea Food" if protein_choice == "1" else ("Red Meat" if protein_choice == "2" else "Chicken")
+        
+       
 
 
 cuisine_preference = get_cuisine_choice()
@@ -40,8 +73,14 @@ print(f"You selected {cuisine_preference} cuisine.")
 
 food_preferences = get_food_type() # Call function to store the returned dictionary.
 
-
-
+if food_preferences["food_type"] in ("Vegetarian", "Non-Vegetarian"):
+    if cuisine_preference == "Chinese":
+        if food_preferences["food_type"] == "Vegetarian":
+            base_choice = get_chinese_vegetarian_choice()
+            food_preferences["base"] = base_choice
+        else:
+            protein_choice = get_chinese_non_vegetarian_choice()
+            food_preferences["protein"] = protein_choice
 
 
 
