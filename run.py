@@ -76,14 +76,42 @@ def get_chinese_non_vegetarian_choice():
         print("1. Sea Food")
         print("2. Red Meat")
         print("3. Chicken")
-
         protein_choice = input("Enter your choice (1, 2 or 3): ")
         if protein_choice not in ("1", "2", "3"):
             print("Invalid choice. Please enter 1, 2, or 3")
-        else: 
-            return "Sea Food" if protein_choice == "1" else ("Red Meat" if protein_choice == "2" else "Chicken")
-        
-       
+        else:
+            if protein_choice == "1":
+                while True:
+                    print("How would you like your Seafood?")
+                    print("1. Classic Seafood")
+                    print("2. Spicy Seafood")
+                    classic_or_spicy = input("Enter your choice (1 or 2): ")
+                    if classic_or_spicy not in ("1", "2"):
+                        print("Invalid Choice. Please enter 1 or 2")
+                    else: 
+                        return "Classic Seafood" if classic_or_spicy == "1" else "Spicy Seafood"
+            elif protein_choice == "2":
+                while True:
+                    print("How would you like your Red Meat? ")
+                    print("1. Stir-Fries")
+                    print("2. Braised Dishes")
+                    stir_or_braised = input("Enter your choice (1 or 2): ")
+                    if stir_or_braised not in ("1", "2"):
+                        print("Invalid Choice. Please enter 1 or 2")                        
+                    else: 
+                        return "Stir-Fries" if classic_or_spicy == "1" else "Braised Dishes"
+            else:
+                while True:
+                    print("How would you like your Chicken? ")
+                    print("1. Stir-Fries-Chicken")
+                    print("2. Noodle Soups")
+                    stir_or_noodle = input("Enter your choice (1 or 2): ")                       
+                    if stir_or_noodle not in ("1", "2"):
+                        print("Invalid Choice. Please enter 1 or 2")
+                    else: 
+                        return "Stir-Fries-Chicken" if stir_or_noodle == "1" else "Noodle Soups"
+               
+    return "Non-Vegetarian Choice"  
 
 
 cuisine_preference = get_cuisine_choice()
@@ -99,7 +127,7 @@ if food_preferences["food_type"] in ("Vegetarian", "Non-Vegetarian"):
         else:
             protein_choice = get_chinese_non_vegetarian_choice()
             food_preferences["protein"] = protein_choice
-
+            
 
 
 
@@ -130,7 +158,7 @@ def food_advice(cuisine, food_type):
                     "Stir Fries": ["Kung pao beef", "Black pepper beef", "Beef and broccoli"],
                     "Braised Foods": ["Braised  pork belly with brown sauce", "Spich sichuan beef stew", "Lion's head meatballs"],
                 "Chicken": {
-                    "Stir Fries": ["Cashew chicken", "Chicken with garlic sauce", "Hunan chicken"],
+                    "Stir Fries Chicken": ["Cashew chicken", "Chicken with garlic sauce", "Hunan chicken"],
                     "Noodle Soups": ["Wonton soup with chicken", "Spicy chicken noodle soup", "Chicken noodle soup with egg drop"]
                 }
                 } 
