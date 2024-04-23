@@ -44,12 +44,30 @@ def get_chinese_vegetarian_choice():
         print("For your Vegetarian Chinese dish, would you prefer:")
         print("1. Rice")
         print("2. Noodles")
-
         base_choice = input("Enter your choice (1 or 2): ")
         if base_choice not in ("1", "2"):
             print("Invalid choice. Please enter 1 or 2.")
         else: 
-            return "Rice" if base_choice == "1" else "Noodle"
+            if base_choice == "1":
+                while True:
+                    print("How would you like your Rice?")
+                    print("1. Fried Rice")
+                    print("2. Soup and Rice Noodles")
+                    fired_or_soup = input("Enter your choice (1 or 2): ")
+                    if fried_or_soup not in ("1", "2"):
+                        print("Invalid choice. Please enter 1 or 2.")
+                    else: 
+                        return "Fried Rice" if fired_or_soup == "1" else "Soup and Rice Noodles"
+            else:
+                while True :
+                    print("How would you like your Noodles?")
+                    print("1. Spicy")
+                    print("2. Classic Savory")
+                    spicy_or_classic = input("Enter your choice (1 or 2): ")
+                    if spicy_or_classic not in ("1", "2"):
+                        print("Invalid choice. Please enter 1 or 2.")
+                    else: 
+                        return "Spicy Noodles" if spicy_or_classic == "1" else "Classic Savory Noodles"
 
 def get_chinese_non_vegetarian_choice():
     """Gets the user's preferred protein for Non-Vegetarian dishes in Chinese cuisine."""
@@ -69,7 +87,7 @@ def get_chinese_non_vegetarian_choice():
 
 
 cuisine_preference = get_cuisine_choice()
-print(f"You selected {cuisine_preference} cuisine.")
+print(f"You selected {cuisine_preference} cuisine.\n")
 
 food_preferences = get_food_type() # Call function to store the returned dictionary.
 
