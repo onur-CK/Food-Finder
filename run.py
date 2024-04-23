@@ -1,20 +1,28 @@
 
-
-
 def get_cuisine_choice():
-    """Gets the user input for cuisine with validation."""
-    valid_cuisines = ["Chinese", "Turkish"]
-    valid_cuisines_lower = [choice.lower() for choice in valid_cuisines]
-    
+    """Gets the user input for choice of cuisine with validation using the numbered options."""
     while True:
-        cuisine_choice = input("What cuisine would you like to try? Turkish or Chinese? ").lower()
-        if cuisine_choice in valid_cuisines_lower:
-            return cuisine_choice
-        else:
-            print(f"Invalid choice. Please enter 'Chinese or Turkish'.")
+        print("Select your preferred cuisine:")
+        print("1. Chinese")
+        print("2. Turkish")
 
-cuisine_preference = get_cuisine_choice()
-print(f"You selected {cuisine_preference} cuisine.")
+        choice = input("Enter your choice (1 or 2): ")
+        # Validate input (to be sure that number is between 1 and 2)
+        if choice.isdigit() and (1 <= int(choice) <= 2):
+            cuisine_map = {
+                "1": "Chinese",
+                "2": "Turkish"
+            }
+            return cuisine_map[choice]
+        else:
+            print("Invalid choice. Please enter 1 or 2.")
+
+
+get_cuisine_choice()
+
+
+
+
 
 
 
