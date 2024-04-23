@@ -41,33 +41,51 @@ def get_food_type():
 def get_chinese_vegetarian_choice():
     """Gets the user's preferred base (Rice or Noodle) for Vegetarian dishes in Chinese cuisine."""
     while True:
-        print("For your Vegetarian Chinese dish, would you prefer:")
+        print("For your Vegetarian Chinese dish, would you prefer: \n")
         print("1. Rice")
         print("2. Noodles")
         base_choice = input("Enter your choice (1 or 2): ")
         if base_choice not in ("1", "2"):
             print("Invalid choice. Please enter 1 or 2.")
         else: 
-            if base_choice == "1":
+            base_choice = int(base_choice)
+            food_preferences = {"food_type": "Vegetarian", "base": base_choice}
+            if base_choice == 1: #Rice
                 while True:
-                    print("How would you like your Rice?")
+                    print("How would you like your Rice? \n")
                     print("1. Fried Rice")
                     print("2. Soup and Rice Noodles")
-                    fired_or_soup = input("Enter your choice (1 or 2): ")
-                    if fried_or_soup not in ("1", "2"):
+                    style_choice = input("Enter your choice (1 or 2): ")
+                    if style_choice not in ("1", "2"):
                         print("Invalid choice. Please enter 1 or 2.")
                     else: 
-                        return "Fried Rice" if fired_or_soup == "1" else "Soup and Rice Noodles"
-            else:
+                        food_preferences["style"] = style_choice
+                        rice_style = "Fried Rice" if style_choice == "1" else "Soup and Rice Noodles"
+                        food_options = suggestions["Chinese"]["Vegetarian"]["Rice"][rice_style]
+                        "Fried Rice" if style_choice == "1" else "Soup and Rice Noodles"
+                        print(f"\nHere are 3 suggestions for {food_preferences['base']} with {food_preferences["style"]}:")
+                        for i in range(3):
+                            print(f"{i+1}. {food_options[i]}")
+                        return food_preferences
+            else: #Noodles
                 while True :
                     print("How would you like your Noodles?")
                     print("1. Spicy")
                     print("2. Classic Savory")
-                    spicy_or_classic = input("Enter your choice (1 or 2): ")
-                    if spicy_or_classic not in ("1", "2"):
+                    style_choice = input("Enter your choice (1 or 2): ")
+                    if style_choice not in ("1", "2"):
                         print("Invalid choice. Please enter 1 or 2.")
                     else: 
-                        return "Spicy Noodles" if spicy_or_classic == "1" else "Classic Savory Noodles"
+                        style_choice = int(style_choice)
+                        food_preferences["style"] = style_choice
+                        noodle_style = "Spicy" if style_choice == 1 else "Classic Savory"
+                        food_options = suggestions["Chinese"]["Vegetarian"]["Noodle"][noodle_style]
+                        "Spicy" if style_choice == "1" else "Classic Savory"
+                        
+                        print(f"\nHere are 3 suggestions for {food_preferences['base']} with {food_preferences['style']}:")
+                        for i in range(3):
+                            print(f"{i+1}. {food_options[i]}")
+                        return food_preferences
 
 def get_chinese_non_vegetarian_choice():
     """Gets the user's preferred protein for Non-Vegetarian dishes in Chinese cuisine."""
@@ -80,7 +98,7 @@ def get_chinese_non_vegetarian_choice():
         if protein_choice not in ("1", "2", "3"):
             print("Invalid choice. Please enter 1, 2, or 3")
         else:
-            if protein_choice == "1":
+            if protein_choice == 1: # Seafood
                 while True:
                     print("How would you like your Seafood?")
                     print("1. Classic Seafood")
@@ -112,6 +130,67 @@ def get_chinese_non_vegetarian_choice():
                         return "Stir-Fries-Chicken" if stir_or_noodle == "1" else "Noodle Soups"
                
     return "Non-Vegetarian Choice"  
+
+
+suggestions = {
+        "Chinese": {
+            "Vegetarian": {
+                "Rice": {
+                    "Fried Rice": ["Yangzhou fried rice", "Vegetable lo mein", "Spicy tofu fried rice"],
+                    "Soup and Rice Noodles": ["Buddha's delight", "Mapo tofu rice bowl", "Spicy eggplant with rice"],
+                },
+                "Noodle": {
+                    "Spicy": ["Sichuan dan dan noodles", "Spicy tofu noodle soup", "Spicy zha jiang mian"],
+                    "Classic Savory": ["Sesame noodle salad(Liang mian)", "Vegetable lo mein", "Wombock noodle soup"]
+                },
+            },
+            "Non-Vegetarian": {
+                "Sea Food": {
+                    "Classic Seafood": ["Steamed whole fish", "Stir-fried shrimp with snow peas", "Braised fish with black bean sauce"],
+                    "Spicy Seafood": ["Kung pao prwans", "Spicy mussel hot pot", "Spicy garlic lobster"],
+                },
+                "Red Meat": {
+                    "Stir Fries": ["Kung pao beef", "Black pepper beef", "Beef and broccoli"],
+                    "Braised Foods": ["Braised  pork belly with brown sauce", "Spich sichuan beef stew", "Lion's head meatballs"],
+                },
+                "Chicken": {
+                    "Stir Fries Chicken": ["Cashew chicken", "Chicken with garlic sauce", "Hunan chicken"],
+                    "Noodle Soups": ["Wonton soup with chicken", "Spicy chicken noodle soup", "Chicken noodle soup with egg drop"]
+                },
+                } ,
+                },
+        "Turkish": {
+            "Vegetarian": {
+                "Main Courses": {
+                    "Stuffed Vegetables": ["Imam bayildi", "Kabak dolmasi(stuffed zucchini)", "Biber dolmasi(Stuffed peppers)"],
+                    "Savory Fritters and Pancakes": ["Mucver", "Gozleme", "Cigar boreks"],
+                "Lentil and Chickpea": {
+                    "Stew and soups": ["Lentil soup", "Chickpea stew", "Zucchini fritter soup"],
+                    "Salads and colds": ["Chichkpea salad", "Lentil salad", "White bean salad"],
+            "Non-Vegetarian": {
+                "Sea Food": {
+                    "Fresh fish dishes": ["Levrek izgara(seabass)", "Hamsili Pilav", "Alinazik with shrimp"],
+                    "Seafood stews and soups": ["Fish stew", "seafood soup", "Dalyan dolmasi(stuffed mussels)"],
+                "Red Meat": {
+                    "Kebabs": ["Doner kebab", "Adana kebab", "Shish kebab"],
+                    "Stews and Braises": ["Hunkar begendi", "Osmanli kebab"],
+                "Chicken": {
+                    "Grilled": ["Tavuk shish", "Alinazik", "Iskender chicken"],
+                    "Baked and Casserole": ["Chicken guvec", "Sultan's delight", "Chicken and pita bread casserole(pide)"]
+                }
+                }
+                }
+            }
+                }
+                }
+            }
+        }
+            } 
+            
+        
+     
+    
+
 
 
 cuisine_preference = get_cuisine_choice()
