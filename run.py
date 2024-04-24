@@ -6,7 +6,7 @@ def get_cuisine_choice():
         print("1. Chinese")
         print("2. Turkish")
 
-        choice = input("Enter your choice (1 or 2): ")
+        choice = input("Enter your choice (1 or 2):\n ")
         # Validate input (to be sure that number is between 1 and 2)
         if not choice.isdigit() or not (1 <= int(choice) <= 2):
             print("Invalid choice. Please enter 1 or 2.\n")
@@ -18,8 +18,6 @@ def get_cuisine_choice():
             return cuisine_map[choice]
         
             
-
-          
 def get_food_type():
     """Get the user preference for Vegetarian or Non-Vegetarian dishes."""
     vegetarian_choice = None # Prepares the variable to store the user's choice for vegetarian or non-vegetarian dishes.
@@ -29,9 +27,9 @@ def get_food_type():
         print("1. Vegetarian")
         print("2. Non-Vegetarian")
         
-        vegetarian_choice = input("Enter your choice (1 or 2) ")
+        vegetarian_choice = input("Enter your choice (1 or 2):\n ")
         if vegetarian_choice not in ("1", "2"):
-            print("Invalid choice. Please enter 1 or 2. ")
+            print("Invalid choice. Please enter 1 or 2.\n ")
     else: 
         return {"food_type": ("Vegetarian" if vegetarian_choice== "1" else "Non-Vegetarian")} 
     # Store user choice in a dictionary and return.
@@ -45,7 +43,7 @@ def get_chinese_vegetarian_choice():
         print("For your Vegetarian Chinese dish, would you prefer: \n")
         print("1. Rice")
         print("2. Noodles")
-        base_choice = input("Enter your choice (1 or 2): ")
+        base_choice = input("Enter your choice (1 or 2):\n ")
         if base_choice not in ("1", "2"):
             print("Invalid choice. Please enter 1 or 2.")
         else: 
@@ -56,9 +54,9 @@ def get_chinese_vegetarian_choice():
                     print("How would you like your Rice? \n")
                     print("1. Fried Rice")
                     print("2. Soup and Rice Noodles")
-                    style_choice = input("Enter your choice (1 or 2): ")
+                    style_choice = input("Enter your choice (1 or 2):\n ")
                     if style_choice not in ("1", "2"):
-                        print("Invalid choice. Please enter 1 or 2.")
+                        print("Invalid choice. Please enter 1 or 2.\n")
                     else: 
                         food_preferences["style"] = style_choice
                         rice_style = "Fried Rice" if style_choice == "1" else "Soup and Rice Noodles"
@@ -70,10 +68,10 @@ def get_chinese_vegetarian_choice():
                         return food_preferences
             else: #Noodles
                 while True :
-                    print("How would you like your Noodles?")
+                    print("How would you like your Noodles?\n ")
                     print("1. Spicy")
                     print("2. Classic Savory")
-                    style_choice = input("Enter your choice (1 or 2): ")
+                    style_choice = input("Enter your choice (1 or 2):\n ")
                     if style_choice not in ("1", "2"):
                         print("Invalid choice. Please enter 1 or 2.")
                     else: 
@@ -88,6 +86,7 @@ def get_chinese_vegetarian_choice():
                             print(f"{i+1}. {food_options[i]}")
                         return food_preferences
 
+
 def get_chinese_non_vegetarian_choice():
     """Gets the user's preferred protein for Non-Vegetarian dishes in Chinese cuisine."""
     while True:
@@ -95,7 +94,7 @@ def get_chinese_non_vegetarian_choice():
         print("1. Sea Food")
         print("2. Red Meat")
         print("3. Chicken")
-        protein_choice = input("Enter your choice (1, 2 or 3): ")
+        protein_choice = input("Enter your choice (1, 2 or 3):\n ")
         if protein_choice not in ("1", "2", "3"):
             print("Invalid choice. Please enter 1, 2, or 3")
         else:
@@ -104,7 +103,7 @@ def get_chinese_non_vegetarian_choice():
                     print("How would you like your Seafood?")
                     print("1. Classic Seafood")
                     print("2. Spicy Seafood")
-                    classic_or_spicy = input("Enter your choice (1 or 2): ")
+                    classic_or_spicy = input("Enter your choice (1 or 2):\n ")
                     if classic_or_spicy not in ("1", "2"):
                         print("Invalid Choice. Please enter 1 or 2")
                     else: 
@@ -119,7 +118,7 @@ def get_chinese_non_vegetarian_choice():
                     print("How would you like your Red Meat? ")
                     print("1. Stir-Fries")
                     print("2. Braised Dishes")
-                    stir_or_braised = input("Enter your choice (1 or 2): ")
+                    stir_or_braised = input("Enter your choice (1 or 2):\n ")
                     if stir_or_braised not in ("1", "2"):
                         print("Invalid Choice. Please enter 1 or 2")                        
                     else: 
@@ -134,7 +133,7 @@ def get_chinese_non_vegetarian_choice():
                     print("How would you like your Chicken? ")
                     print("1. Stir-Fries-Chicken")
                     print("2. Noodle Soups")
-                    stir_or_noodle = input("Enter your choice (1 or 2): ")                       
+                    stir_or_noodle = input("Enter your choice (1 or 2):\n ")                       
                     if stir_or_noodle not in ("1", "2"):
                         print("Invalid Choice. Please enter 1 or 2")
                     else: 
@@ -146,6 +145,115 @@ def get_chinese_non_vegetarian_choice():
                         return "Stir-Fries-Chicken" if stir_or_noodle == "1" else "Noodle Soups"
                
     return "Non-Vegetarian Choice"  
+
+def get_turkish_vegetarian_choice():
+    """Gets the user's preferred base (Rice or Noodle) for Vegetarian dishes in Chinese cuisine."""
+    while True:
+        print("For your Vegetarian Turkish dish, would you prefer:\n ")
+        print("1. Main Courses")
+        print("2. Lentil and Chickpea")
+        base_choice = input("Enter your choice (1 or 2):\n ")
+        if base_choice not in ("1", "2"):
+            print("Invalid choice. Please enter 1 or 2:\n ")
+        else: 
+            base_choice = int(base_choice)
+            food_preferences = {"food_type": "Vegetarian", "base": base_choice}
+            if base_choice == 1: # Main Courses
+                while True:
+                    print("How would you like your Main courses?\n ")
+                    print("1. Stuffed Vegetables")
+                    print("2. Savory Fritters and Pancakes")
+                    style_choice = input("Enter your choice (1 or 2):\n ")
+                    if style_choice not in ("1", "2"):
+                        print("Invalid choice. Please enter 1 or 2:\n ")
+                    else: 
+                        food_preferences["style"] = style_choice
+                        main_courses_style = "Stuffed Vegetables" if style_choice == "1" else "Savory Fritters and Pancakes"
+                        food_options = suggestions["Turkish"]["Vegetarian"]["Main Courses"][main_courses_style]
+                        "Stuffed Vegetables" if style_choice == "1" else "Savory Fritters and Pancakes"
+                        print(f"\nHere are 3 suggestions for {food_preferences['base']} with {food_preferences["style"]}:")
+                        for i in range(3):
+                            print(f"{i+1}. {food_options[i]}")
+                        return food_preferences
+            else: # Lentil and Chickpea
+                while True :
+                    print("How would you like your Lentil and Chickpea?\n ")
+                    print("1. Stew and Soups")
+                    print("2. Salads and Colds")
+                    style_choice = input("Enter your choice (1 or 2):\n ")
+                    if style_choice not in ("1", "2"):
+                        print("Invalid choice. Please enter 1 or 2:\n ")
+                    else: 
+                        style_choice = int(style_choice)
+                        food_preferences["style"] = style_choice
+                        lentil_and_chickpea_style = "Stew and Soups" if style_choice == 1 else "Salads and Colds"
+                        food_options = suggestions["Turkish"]["Vegetarian"]["Lentil and Chickpea"][lentil_and_chickpea_style]
+                        "Stew and Soups" if style_choice == "1" else "Salad and Colds"
+                        
+                        print(f"\nHere are 3 suggestions for {food_preferences['base']} with {food_preferences['style']}:")
+                        for i in range(3):
+                            print(f"{i+1}. {food_options[i]}")
+                        return food_preferences
+
+def get_turkish_non_vegetarian_choice():
+    """Gets the user's preferred protein for Non-Vegetarian dishes in Turkish cuisine."""
+    while True:
+        print("For your Non-Vegetarian Turkish dish, would you prefer:\n ")
+        print("1. Sea Food")
+        print("2. Red Meat")
+        print("3. Chicken")
+        protein_choice = input("Enter your choice (1, 2 or 3):\n ")
+        if protein_choice not in ("1", "2", "3"):
+            print("Invalid choice. Please enter 1, 2, or 3")
+        else:
+            if protein_choice == "1": # Seafood 
+                while True:
+                    print("How would you like your Seafood?\n ")
+                    print("1. Fresh Fish Dishes")
+                    print("2. Seafood Stews and Soups")
+                    fresh_fish_or_soups = input("Enter your choice (1 or 2):\n ")
+                    if fresh_fish_or_soups not in ("1", "2"):
+                        print("Invalid Choice. Please enter 1 or 2:\n ")
+                    else: 
+                        seafood_style = "Fresh Fish Dishes" if fresh_fish_or_soups == "1" else "Seafood Stews and Soups"
+                        food_options = suggestions["Turkish"]["Non-Vegetarian"]["Sea Food"][seafood_style]
+                        print(f"\nHere are 3 suggestions for Seafood with {seafood_style}:")
+                        for i in range(3):
+                            print(f"{i+1}. {food_options[i]}")
+                        return seafood_style
+            elif protein_choice == "2": # Red Meat
+                while True:
+                    print("How would you like your Red Meat? ")
+                    print("1. Kebabs")
+                    print("2. Stews and Braises")
+                    kebabs_or_stews = input("Enter your choice (1 or 2):\n ")
+                    if kebabs_or_stews not in ("1", "2"):
+                        print("Invalid Choice. Please enter 1 or 2:\n ")                        
+                    else: 
+                        meat_style = "Kebabs" if kebabs_or_stews == "1" else "Stews and Braises"
+                        food_options = suggestions["Turkish"]["Non-Vegetarian"]["Red Meat"][meat_style]
+                        print(f"\nHere are 3 suggestions for Red Meat with {meat_style}:")
+                        for i in range(3):
+                            print(f"{i+1}. {food_options[i]}")
+                        return meat_style
+            else:
+                while True:
+                    print("How would you like your Chicken? ")
+                    print("1. Grilled")
+                    print("2. Baked and Casserole")
+                    grilled_or_baked_casserole = input("Enter your choice (1 or 2):\n ")                       
+                    if grilled_or_baked_casserole not in ("1", "2"):
+                        print("Invalid Choice. Please enter 1 or 2:\n ")
+                    else: 
+                        chicken_style = "Grilled" if grilled_or_baked_casserole == "1" else "Baked and Casserole"
+                        food_options = suggestions["Turkish"]["Non-Vegetarian"]["Chicken"][chicken_style]
+                        print(f"\nHere are 3 suggestions for Chicken with {chicken_style}:")
+                        for i in range(3):
+                            print(f"{i+1}. {food_options[i]}")
+                        return "Grilled" if grilled_or_baked_casserole == "1" else "Baked and Casserole"
+               
+    return "Non-Vegetarian Choice"  
+
 
 
 suggestions = {
@@ -173,53 +281,61 @@ suggestions = {
                     "Stir Fries Chicken": ["Cashew chicken", "Chicken with garlic sauce", "Hunan chicken"],
                     "Noodle Soups": ["Wonton soup with chicken", "Spicy chicken noodle soup", "Chicken noodle soup with egg drop"]
                 },
-                } ,
-                },
+            },
+        },
         "Turkish": {
             "Vegetarian": {
                 "Main Courses": {
                     "Stuffed Vegetables": ["Imam bayildi", "Kabak dolmasi(stuffed zucchini)", "Biber dolmasi(Stuffed peppers)"],
-                    "Savory Fritters and Pancakes": ["Mucver", "Gozleme", "Cigar boreks"],
+                    "Savory Fritters and Pancakes": ["Mucver", "Gozleme", "Cigar boreks"]
+                },
                 "Lentil and Chickpea": {
-                    "Stew and soups": ["Lentil soup", "Chickpea stew", "Zucchini fritter soup"],
-                    "Salads and colds": ["Chichkpea salad", "Lentil salad", "White bean salad"],
+                    "Stew and Soups": ["Lentil soup", "Chickpea stew", "Zucchini fritter soup"],
+                    "Salads and Colds": ["Chichkpea salad", "Lentil salad", "White bean salad"]
+                },
+            },   
             "Non-Vegetarian": {
                 "Sea Food": {
-                    "Fresh fish dishes": ["Levrek izgara(seabass)", "Hamsili Pilav", "Alinazik with shrimp"],
-                    "Seafood stews and soups": ["Fish stew", "seafood soup", "Dalyan dolmasi(stuffed mussels)"],
+                    "Fresh Fish Dishes": ["Levrek izgara(seabass)", "Hamsili Pilav", "Alinazik with shrimp"],
+                    "Seafood Stews and Soups": ["Fish stew", "Seafood soup", "Dalyan dolmasi(stuffed mussels)"]
+                },
                 "Red Meat": {
                     "Kebabs": ["Doner kebab", "Adana kebab", "Shish kebab"],
-                    "Stews and Braises": ["Hunkar begendi", "Osmanli kebab"],
+                    "Stews and Braises": ["Hunkar begendi", "Osmanli kebab", "Iskender kebab"]
+                },
                 "Chicken": {
                     "Grilled": ["Tavuk shish", "Alinazik", "Iskender chicken"],
                     "Baked and Casserole": ["Chicken guvec", "Sultan's delight", "Chicken and pita bread casserole(pide)"]
                 }
-                }
-                }
             }
-                }
-                }
-            }
-        }
-            } 
             
-        
-     
+        }
+}
+            
+   
 cuisine_preference = get_cuisine_choice()
 print(f"You selected {cuisine_preference} cuisine.\n")
 
 food_preferences = get_food_type() # Call function to store the returned dictionary.
 
 if food_preferences["food_type"] in ("Vegetarian", "Non-Vegetarian"):
-    if cuisine_preference == "Chinese":
+    if cuisine_preference == "Chinese": # Chinese cuisine preference
         if food_preferences["food_type"] == "Vegetarian":
             base_choice = get_chinese_vegetarian_choice()
             food_preferences["base"] = base_choice
         else:
             protein_choice = get_chinese_non_vegetarian_choice()
             food_preferences["protein"] = protein_choice
+    elif cuisine_preference == "Turkish": # Turkish cuisine preference
+        if food_preferences["food_type"] == "Vegetarian":
+            base_choice = get_turkish_vegetarian_choice()
+            food_preferences["base"] = base_choice
+        else:
+            protein_choice = get_turkish_non_vegetarian_choice()
+            food_preferences["protein"] = protein_choice
+        
             
-
+      
 
 
 
