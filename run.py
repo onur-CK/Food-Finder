@@ -8,14 +8,16 @@ def get_cuisine_choice():
 
         choice = input("Enter your choice (1 or 2): ")
         # Validate input (to be sure that number is between 1 and 2)
-        if choice.isdigit() and (1 <= int(choice) <= 2):
+        if not choice.isdigit() or not (1 <= int(choice) <= 2):
+            print("Invalid choice. Please enter 1 or 2.\n")
+        else:    
             cuisine_map = {
                 "1": "Chinese",
                 "2": "Turkish"
             }
             return cuisine_map[choice]
-        else:
-            print("Invalid choice. Please enter 1 or 2.")
+        
+            
 
           
 
