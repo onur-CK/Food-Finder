@@ -311,7 +311,13 @@ suggestions = {
             
         }
 }
-            
+
+print("Welcome to Food Finder App!\n")
+print("Are you hungry and you don't know what to eat?\n")
+print("Than you are at the right app.\n")
+print("Please follow the questions so I can guide you better\n for finding the foods that suit you best.\n")
+
+
  
 while True:
     cuisine_preference = get_cuisine_choice()
