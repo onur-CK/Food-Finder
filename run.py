@@ -1,11 +1,10 @@
-
+# Function to get the user's choice of cuisine
 def get_cuisine_choice():
     """Gets the user input for choice of cuisine with validation using the numbered options."""
     while True:
         print("Select your preferred cuisine:")
         print("1. Chinese")
         print("2. Turkish")
-
         choice = input("Enter your choice (1 or 2):\n ")
         # Validate input (to be sure that number is between 1 and 2)
         if not choice.isdigit() or not (1 <= int(choice) <= 2):
@@ -17,16 +16,14 @@ def get_cuisine_choice():
             }
             return cuisine_map[choice]
         
-            
+# Function to get user preferences for Vegetarian or Non-Vegetarian dishes    
 def get_food_type():
     """Get the user preference for Vegetarian or Non-Vegetarian dishes."""
     vegetarian_choice = None # Prepares the variable to store the user's choice for vegetarian or non-vegetarian dishes.
-
     while vegetarian_choice not in ("1", "2"):
         print("Select your preferred food type:")
         print("1. Vegetarian")
         print("2. Non-Vegetarian")
-        
         vegetarian_choice = input("Enter your choice (1 or 2):\n ")
         if vegetarian_choice not in ("1", "2"):
             print("Invalid choice. Please enter 1 or 2.\n ")
@@ -35,7 +32,6 @@ def get_food_type():
     # Store user choice in a dictionary and return.
     user_preferences = {"food_type": ("Vegetarian" if vegetarian_choice == "1" else "Non-Vegetarian")}
     return user_preferences
-
 
 def get_chinese_vegetarian_choice():
     """Gets the user's preferred base (Rice or Noodle) for Vegetarian dishes in Chinese cuisine."""
@@ -62,6 +58,7 @@ def get_chinese_vegetarian_choice():
                         rice_style = "Fried Rice" if style_choice == "1" else "Soup and Rice Noodles"
                         food_options = suggestions["Chinese"]["Vegetarian"]["Rice"][rice_style]
                         "Fried Rice" if style_choice == "1" else "Soup and Rice Noodles"
+                        # Print 3 food suggestions based on user preferences
                         print(f"\nHere are 3 suggestions for {food_preferences['base']} with {food_preferences["style"]}:\n ")
                         for i in range(3):
                             print(f"{i+1}. {food_options[i]}")
@@ -80,7 +77,7 @@ def get_chinese_vegetarian_choice():
                         noodle_style = "Spicy" if style_choice == 1 else "Classic Savory"
                         food_options = suggestions["Chinese"]["Vegetarian"]["Noodle"][noodle_style]
                         "Spicy" if style_choice == "1" else "Classic Savory"
-                        
+                        # Print 3 food suggestions based on user preferences
                         print(f"\nHere are 3 suggestions for {food_preferences['base']} with {food_preferences['style']}:\n ")
                         for i in range(3):
                             print(f"{i+1}. {food_options[i]}")
@@ -109,6 +106,7 @@ def get_chinese_non_vegetarian_choice():
                     else: 
                         seafood_style = "Classic Seafood" if classic_or_spicy == "1" else "Spicy Seafood"
                         food_options = suggestions["Chinese"]["Non-Vegetarian"]["Sea Food"][seafood_style]
+                        # Print 3 food suggestions based on user preferences
                         print(f"\nHere are 3 suggestions for Seafood with {seafood_style}:\n ")
                         for i in range(3):
                             print(f"{i+1}. {food_options[i]}")
@@ -124,11 +122,12 @@ def get_chinese_non_vegetarian_choice():
                     else: 
                         meat_style = "Stir Fries" if stir_or_braised == "1" else "Braised Foods"
                         food_options = suggestions["Chinese"]["Non-Vegetarian"]["Red Meat"][meat_style]
+                        # Print 3 food suggestions based on user preferences
                         print(f"\nHere are 3 suggestions for Red Meat with {meat_style}:\n ")
                         for i in range(3):
                             print(f"{i+1}. {food_options[i]}")
                         return meat_style
-            else:
+            else: # Chicken
                 while True:
                     print("How would you like your Chicken? ")
                     print("1. Stir-Fries-Chicken")
@@ -139,6 +138,7 @@ def get_chinese_non_vegetarian_choice():
                     else: 
                         chicken_style = "Stir Fries Chicken" if stir_or_noodle == "1" else "Noodle Soups"
                         food_options = suggestions["Chinese"]["Non-Vegetarian"]["Chicken"][chicken_style]
+                        # Print 3 food suggestions based on user preferences
                         print(f"\nHere are 3 suggestions for Chicken with {chicken_style}:\n ")
                         for i in range(3):
                             print(f"{i+1}. {food_options[i]}")
@@ -171,6 +171,7 @@ def get_turkish_vegetarian_choice():
                         main_courses_style = "Stuffed Vegetables" if style_choice == "1" else "Savory Fritters and Pancakes"
                         food_options = suggestions["Turkish"]["Vegetarian"]["Main Courses"][main_courses_style]
                         "Stuffed Vegetables" if style_choice == "1" else "Savory Fritters and Pancakes"
+                        # Print 3 food suggestions based on user preferences
                         print(f"\nHere are 3 suggestions for {food_preferences['base']} with {food_preferences["style"]}:\n ")
                         for i in range(3):
                             print(f"{i+1}. {food_options[i]}")
@@ -189,7 +190,7 @@ def get_turkish_vegetarian_choice():
                         lentil_and_chickpea_style = "Stew and Soups" if style_choice == 1 else "Salads and Colds"
                         food_options = suggestions["Turkish"]["Vegetarian"]["Lentil and Chickpea"][lentil_and_chickpea_style]
                         "Stew and Soups" if style_choice == "1" else "Salad and Colds"
-                        
+                        # Print 3 food suggestions based on user preferences
                         print(f"\nHere are 3 suggestions for {food_preferences['base']} with {food_preferences['style']}:\n ")
                         for i in range(3):
                             print(f"{i+1}. {food_options[i]}")
@@ -217,6 +218,7 @@ def get_turkish_non_vegetarian_choice():
                     else: 
                         seafood_style = "Fresh Fish Dishes" if fresh_fish_or_soups == "1" else "Seafood Stews and Soups"
                         food_options = suggestions["Turkish"]["Non-Vegetarian"]["Sea Food"][seafood_style]
+                        # Print 3 food suggestions based on user preferences
                         print(f"\nHere are 3 suggestions for Seafood with {seafood_style}:\n ")
                         for i in range(3):
                             print(f"{i+1}. {food_options[i]}")
@@ -232,11 +234,12 @@ def get_turkish_non_vegetarian_choice():
                     else: 
                         meat_style = "Kebabs" if kebabs_or_stews == "1" else "Stews and Braises"
                         food_options = suggestions["Turkish"]["Non-Vegetarian"]["Red Meat"][meat_style]
+                        # Print 3 food suggestions based on user preferences
                         print(f"\nHere are 3 suggestions for Red Meat with {meat_style}:\n ")
                         for i in range(3):
                             print(f"{i+1}. {food_options[i]}")
                         return meat_style
-            else:
+            else: # Chicken
                 while True:
                     print("How would you like your Chicken? ")
                     print("1. Grilled")
@@ -247,6 +250,7 @@ def get_turkish_non_vegetarian_choice():
                     else: 
                         chicken_style = "Grilled" if grilled_or_baked_casserole == "1" else "Baked and Casserole"
                         food_options = suggestions["Turkish"]["Non-Vegetarian"]["Chicken"][chicken_style]
+                        # Print 3 food suggestions based on user preferences
                         print(f"\nHere are 3 suggestions for Chicken with {chicken_style}:\n ")
                         for i in range(3):
                             print(f"{i+1}. {food_options[i]}")
@@ -255,7 +259,7 @@ def get_turkish_non_vegetarian_choice():
     return "Non-Vegetarian Choice"  
 
 
-
+# Food suggestion list
 suggestions = {
         "Chinese": {
             "Vegetarian": {
@@ -312,43 +316,53 @@ suggestions = {
         }
 }
 
+# Welcome message 
 print("Welcome to Food Finder App!\n")
 print("Are you hungry and you don't know what to eat?\n")
 print("Than you are at the right app.\n")
-print("Please follow the questions so I can guide you better\n for finding the foods that suit you best.\n")
+print("Please follow the questions so I can guide you better\nfor finding the foods that suit you best.\n")
 
 
- 
+# Loop to ask the user for the cuisine and food preferences 
 while True:
+    # Get the user's cuisine preference
     cuisine_preference = get_cuisine_choice()
     print(f"You selected {cuisine_preference} cuisine.\n")
 
+    # Get the user's food type preference
     food_preferences = get_food_type() # Call function to store the returned dictionary.
 
-
+    # Check if the user's food type preference is either Vegetarian or Non-Vegetarian
     if food_preferences["food_type"] in ("Vegetarian", "Non-Vegetarian"):
+        # Check the cuisine preference to decide which set of options to present
         if cuisine_preference == "Chinese": # Chinese cuisine preference
             if food_preferences["food_type"] == "Vegetarian":
+                # Get the user's preferred base Rice or Noodle (Chinese/Vegetarian)
                 base_choice = get_chinese_vegetarian_choice()
                 food_preferences["base"] = base_choice
             else:
+                # Get  the user's preferred protein (Chinese/Non-Vegetarian)
                 protein_choice = get_chinese_non_vegetarian_choice()
                 food_preferences["protein"] = protein_choice
         elif cuisine_preference == "Turkish": # Turkish cuisine preference
             if food_preferences["food_type"] == "Vegetarian":
+                # Get the user's preffered base Main Courses or Lentil and Chickpea (Turkish/Vegetarian)
                 base_choice = get_turkish_vegetarian_choice()
                 food_preferences["base"] = base_choice
             else:
+                # Get the user's preferred protein (Turkish/Non-Vegetarian)
                 protein_choice = get_turkish_non_vegetarian_choice()
                 food_preferences["protein"] = protein_choice
 
+    # Ask if the user wants to try again
     try_again= input("Would you like to try again? (1. Yes / 2. No):\n ")
     
+    # Check the user's choice for trying again
     while try_again not in ("1", "2"):
         print("Invalid choice. Please enter 1 or 2.:\n ")
         try_again= input("Would you like to try again? (1. Yes / 2. No):\n ")
         
-    
+    # If the user chooses not to try again, break the loop
     if try_again != "1":
         print("Thanks for trying the Food Finder app.\nHave a good day.")
         break
