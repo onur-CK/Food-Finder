@@ -20,7 +20,6 @@ def get_cuisine_choice():
             
 
           
-
 def get_food_type():
     """Get the user preference for Vegetarian or Non-Vegetarian dishes."""
     vegetarian_choice = None # Prepares the variable to store the user's choice for vegetarian or non-vegetarian dishes.
@@ -100,7 +99,7 @@ def get_chinese_non_vegetarian_choice():
         if protein_choice not in ("1", "2", "3"):
             print("Invalid choice. Please enter 1, 2, or 3")
         else:
-            if protein_choice == 1: # Seafood
+            if protein_choice == "1": # Seafood 
                 while True:
                     print("How would you like your Seafood?")
                     print("1. Classic Seafood")
@@ -109,8 +108,13 @@ def get_chinese_non_vegetarian_choice():
                     if classic_or_spicy not in ("1", "2"):
                         print("Invalid Choice. Please enter 1 or 2")
                     else: 
-                        return "Classic Seafood" if classic_or_spicy == "1" else "Spicy Seafood"
-            elif protein_choice == "2":
+                        seafood_style = "Classic Seafood" if classic_or_spicy == "1" else "Spicy Seafood"
+                        food_options = suggestions["Chinese"]["Non-Vegetarian"]["Sea Food"][seafood_style]
+                        print(f"\nHere are 3 suggestions for Seafood with {seafood_style}:")
+                        for i in range(3):
+                            print(f"{i+1}. {food_options[i]}")
+                        return seafood_style
+            elif protein_choice == "2": # Red Meat
                 while True:
                     print("How would you like your Red Meat? ")
                     print("1. Stir-Fries")
@@ -119,7 +123,12 @@ def get_chinese_non_vegetarian_choice():
                     if stir_or_braised not in ("1", "2"):
                         print("Invalid Choice. Please enter 1 or 2")                        
                     else: 
-                        return "Stir-Fries" if classic_or_spicy == "1" else "Braised Dishes"
+                        meat_style = "Stir Fries" if stir_or_braised == "1" else "Braised Foods"
+                        food_options = suggestions["Chinese"]["Non-Vegetarian"]["Red Meat"][meat_style]
+                        print(f"\nHere are 3 suggestions for Red Meat with {meat_style}:")
+                        for i in range(3):
+                            print(f"{i+1}. {food_options[i]}")
+                        return meat_style
             else:
                 while True:
                     print("How would you like your Chicken? ")
@@ -129,6 +138,11 @@ def get_chinese_non_vegetarian_choice():
                     if stir_or_noodle not in ("1", "2"):
                         print("Invalid Choice. Please enter 1 or 2")
                     else: 
+                        chicken_style = "Stir Fries Chicken" if stir_or_noodle == "1" else "Noodle Soups"
+                        food_options = suggestions["Chinese"]["Non-Vegetarian"]["Chicken"][chicken_style]
+                        print(f"\nHere are 3 suggestions for Chicken with {chicken_style}:")
+                        for i in range(3):
+                            print(f"{i+1}. {food_options[i]}")
                         return "Stir-Fries-Chicken" if stir_or_noodle == "1" else "Noodle Soups"
                
     return "Non-Vegetarian Choice"  
