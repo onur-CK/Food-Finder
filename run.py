@@ -323,16 +323,10 @@ suggestions = {
         }
 }
 
-def instructions():
-    
-    print("Food Finder App Instructions:")
-    print("1. Answer the following questions to receive food suggestions.")
-    print("2. Follow the prompts to select your preferred cuisine,\nfood type, and dish.")
-    print("3. Enjoy your personalized food recommendations!\n")
-
 
 # Food Finder ASCII logo
-print(
+def intro():
+    print(
     """
   _____ ___   ___  ____    _____ ___ _   _ ____  _____ ____  
  |  ___/ _ \\ / _ \\|  _ \\  |  ___|_ _| \\ | |  _ \\| ____|  _ \\ 
@@ -350,6 +344,17 @@ Please select an option:
 
 )
 
+
+def instructions():
+    
+    print("Food Finder App Instructions:")
+    print("1. Answer the following questions to receive food suggestions.")
+    print("2. Follow the prompts to select your preferred cuisine,\nfood type, and dish.")
+    print("3. Enjoy your personalized food recommendations!\n")
+
+
+intro()
+
 user_choice = input("Enter your choice (1 or 2): ")
 
 while user_choice not in ("1", "2"):
@@ -360,10 +365,17 @@ if user_choice == "1":
     print("Let's get started!\n")
 elif user_choice == "2":
     instructions()
-    print("Are you ready to begin?\n")
-    exit()
+    user_ready = input("Are you ready to begin? (1. Yes / 2. No): ")
 
+    while user_ready not in ("1", "2"):
+        print("Invalid choice. Please enter 1 or 2.")
+        user_ready = input("Are you ready to begin? (1. Yes / 2. No): ")
 
+    if user_ready == "1":
+        print("Let's get started!\n")
+    else:
+        intro()
+       
 
 # Loop to ask the user for the cuisine and food preferences 
 while True:
