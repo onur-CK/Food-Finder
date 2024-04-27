@@ -31,11 +31,8 @@ def get_food_type():
             print("Invalid choice. Please enter 1 or 2.\n ")
     else: 
         return {"food_type": ("Vegetarian" if vegetarian_choice== "1" else "Non-Vegetarian")} 
-    # Store user choice in a dictionary and return.
-    user_preferences = {"food_type": ("Vegetarian" if vegetarian_choice == "1" else "Non-Vegetarian")}
-    return user_preferences
-
-
+    
+    
 def get_base_dish_preferences(base_type, cuisine, food_type):
     """Gets the user's preferred base for both Chinese and Turkish cuisine."""
     suggestions = {
@@ -102,8 +99,7 @@ def get_base_dish_preferences(base_type, cuisine, food_type):
         if base_choice.isdigit() and 1 <= int(base_choice) <= len(options[cuisine][food_type][base_type]):
             return options[cuisine][food_type][base_type][int(base_choice) -1]
         else: 
-            print("Invalid choice. Please enter a number corresponding to the options.\n "
-            )
+            print("Invalid choice. Please enter a number corresponding to the options.\n ")
 
 
 def get_chinese_vegetarian_choice():
@@ -392,12 +388,8 @@ def start_app():
     if user_choice == "1":
         print("Let's get started!\n")
     elif user_choice == "2":
-        user_ready = handle_instructions()
-        if user_ready == "1":
-            print("Let's get started!\n ")
-        else:
-            print("Please select an option:")
-            start_app()
+        handle_instructions()
+        
 
 start_app()
     
