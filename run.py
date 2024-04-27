@@ -1,3 +1,10 @@
+# print("Welcome...Please press 1 to begin and 2 for instructions.\n")
+# 1 for initial_text()
+# 2 for instructions()
+
+
+
+
 # Function to get the user's choice of cuisine
 def get_cuisine_choice():
     """Gets the user input for choice of cuisine with validation using the numbered options."""
@@ -317,6 +324,18 @@ suggestions = {
 }
 
 # Welcome message 
+print(
+    """
+  _____ ___   ___  ____    _____ ___ _   _ ____  _____ ____  
+ |  ___/ _ \\ / _ \\|  _ \\  |  ___|_ _| \\ | |  _ \\| ____|  _ \\ 
+ | |_ | | | | | | | | | | | |_   | ||  \\| | | | |  _| | |_) |
+ |  _|| |_| | |_| | |_| | |  _|  | || |\\  | |_| | |___|  _ < 
+ |_|   \\___/ \\___/|____/  |_|   |___|_| \\_|____/|_____|_| \\_\\
+                                                             
+
+    """
+
+)
 print("Welcome to Food Finder App!\n")
 print("Are you hungry and you don't know what to eat?\n")
 print("Than you are at the right app.\n")
