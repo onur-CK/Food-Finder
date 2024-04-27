@@ -100,6 +100,18 @@ def get_base_preferences(suggestions, cuisine, food_type):
             print("Invalid choice. Please enter a number corresponding to the optins.\n ")
 
 
+def get_suggestions(suggestions, cuisine, food_type, base_type):
+    while True:
+        print("How would you like your {base_type}")
+        sub_categories = suggestions[cuisine][food_type][base_type].keys()
+        for i, sub_category in enumerate(sub_categories, 1):
+            print(f"{i}. {sub_category}")
+        sub_choice = input(f"Enter your choice (1 or {len(sub_categories)}):\n ")
+        if sub_choice.isdigit() and 1 <= int(sub_choice) <= len(sub_categories):
+            selected_Sub_category = list(sub_categories)[int(sub_choice) - 1]
+            return suggestions[cuisine][food_type][base_type][selected_sub_category]
+        else:
+            print ("Invalid choice. Please enter a number corresponding to the options.")
 
 
 
