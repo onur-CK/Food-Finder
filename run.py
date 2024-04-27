@@ -1,13 +1,7 @@
-# print("Welcome...Please press 1 to begin and 2 for instructions.\n")
-# 1 for initial_text()
-# 2 for instructions()
-
-
-
-
 # Function to get the user's choice of cuisine
 def get_cuisine_choice():
-    """Gets the user input for choice of cuisine with validation using the numbered options."""
+    """
+    Gets the user input for choice of cuisine with validation using the numbered options."""
     while True:
         print("Select your preferred cuisine:")
         print("1. Chinese")
@@ -22,7 +16,8 @@ def get_cuisine_choice():
                 "2": "Turkish"
             }
             return cuisine_map[choice]
-        
+
+
 # Function to get user preferences for Vegetarian or Non-Vegetarian dishes    
 def get_food_type():
     """Get the user preference for Vegetarian or Non-Vegetarian dishes."""
@@ -39,6 +34,77 @@ def get_food_type():
     # Store user choice in a dictionary and return.
     user_preferences = {"food_type": ("Vegetarian" if vegetarian_choice == "1" else "Non-Vegetarian")}
     return user_preferences
+
+
+def get_base_dish_preferences(base_type, cuisine, food_type):
+    """Gets the user's preferred base for both Chinese and Turkish cuisine."""
+    suggestions = {
+            "Chinese": {
+                "Vegetarian": {
+                    "Rice": {
+                        "Fried Rice": ["Yangzhou fried rice", "Vegetable lo mein", "Spicy tofu fried rice"],
+                        "Soup and Rice Noodles": ["Buddha's delight", "Mapo tofu rice bowl", "Spicy eggplant with rice"],
+                    },
+                    "Noodle": {
+                        "Spicy": ["Sichuan dan dan noodles", "Spicy tofu noodle soup", "Spicy zha jiang mian"],
+                        "Classic Savory": ["Sesame noodle salad(Liang mian)", "Vegetable lo mein", "Wombock noodle soup"]
+                    },
+                },
+                "Non-Vegetarian": {
+                    "Sea Food": {
+                        "Classic Seafood": ["Steamed whole fish", "Stir-fried shrimp with snow peas", "Braised fish with black bean sauce"],
+                        "Spicy Seafood": ["Kung pao prwans", "Spicy mussel hot pot", "Spicy garlic lobster"],
+                    },
+                    "Red Meat": {
+                        "Stir Fries": ["Kung pao beef", "Black pepper beef", "Beef and broccoli"],
+                        "Braised Foods": ["Braised  pork belly with brown sauce", "Spich sichuan beef stew", "Lion's head meatballs"],
+                    },
+                    "Chicken": {
+                        "Stir Fries Chicken": ["Cashew chicken", "Chicken with garlic sauce", "Hunan chicken"],
+                        "Noodle Soups": ["Wonton soup with chicken", "Spicy chicken noodle soup", "Chicken noodle soup with egg drop"]
+                    },
+                },
+            },
+            "Turkish": {
+                "Vegetarian": {
+                    "Main Courses": {
+                        "Stuffed Vegetables": ["Imam bayildi", "Kabak dolmasi(stuffed zucchini)", "Biber dolmasi(Stuffed peppers)"],
+                        "Savory Fritters and Pancakes": ["Mucver", "Gozleme", "Cigar boreks"]
+                    },
+                    "Lentil and Chickpea": {
+                        "Stew and Soups": ["Lentil soup", "Chickpea stew", "Zucchini fritter soup"],
+                        "Salads and Colds": ["Chichkpea salad", "Lentil salad", "White bean salad"]
+                    },
+                },   
+                "Non-Vegetarian": {
+                    "Sea Food": {
+                        "Fresh Fish Dishes": ["Levrek izgara(seabass)", "Hamsili Pilav", "Alinazik with shrimp"],
+                        "Seafood Stews and Soups": ["Fish stew", "Seafood soup", "Dalyan dolmasi(stuffed mussels)"]
+                    },
+                    "Red Meat": {
+                        "Kebabs": ["Doner kebab", "Adana kebab", "Shish kebab"],
+                        "Stews and Braises": ["Hunkar begendi", "Osmanli kebab", "Iskender kebab"]
+                    },
+                    "Chicken": {
+                        "Grilled": ["Tavuk shish", "Alinazik", "Iskender chicken"],
+                        "Baked and Casserole": ["Chicken guvec", "Sultan's delight", "Chicken and pita bread casserole(pide)"]
+                    }
+                }
+                
+            }
+    }
+
+    while True:
+        print(f"For your {food_type} {cuisine} dish, would you prefer:\n ")
+        for i, option in enumerate(options[cuisine][food_type][base_type], 1):
+            print(f"{i}. {option}")
+        base_choice = input(f"Enter your choice (1 to {len(options[cuisine][food_type][base_type])}):\n ")
+        if base_choice.isdigit() and 1 <= int(base_choice) <= len(options[cuisine][food_type][base_type]):
+            return options[cuisine][food_type][base_type][int(base_choice) -1]
+        else: 
+            print("Invalid choice. Please enter a number corresponding to the options.\n "
+            )
+
 
 def get_chinese_vegetarian_choice():
     """Gets the user's preferred base (Rice or Noodle) for Vegetarian dishes in Chinese cuisine."""
@@ -266,62 +332,7 @@ def get_turkish_non_vegetarian_choice():
     return "Non-Vegetarian Choice"  
 
 
-# Food suggestion list
-suggestions = {
-        "Chinese": {
-            "Vegetarian": {
-                "Rice": {
-                    "Fried Rice": ["Yangzhou fried rice", "Vegetable lo mein", "Spicy tofu fried rice"],
-                    "Soup and Rice Noodles": ["Buddha's delight", "Mapo tofu rice bowl", "Spicy eggplant with rice"],
-                },
-                "Noodle": {
-                    "Spicy": ["Sichuan dan dan noodles", "Spicy tofu noodle soup", "Spicy zha jiang mian"],
-                    "Classic Savory": ["Sesame noodle salad(Liang mian)", "Vegetable lo mein", "Wombock noodle soup"]
-                },
-            },
-            "Non-Vegetarian": {
-                "Sea Food": {
-                    "Classic Seafood": ["Steamed whole fish", "Stir-fried shrimp with snow peas", "Braised fish with black bean sauce"],
-                    "Spicy Seafood": ["Kung pao prwans", "Spicy mussel hot pot", "Spicy garlic lobster"],
-                },
-                "Red Meat": {
-                    "Stir Fries": ["Kung pao beef", "Black pepper beef", "Beef and broccoli"],
-                    "Braised Foods": ["Braised  pork belly with brown sauce", "Spich sichuan beef stew", "Lion's head meatballs"],
-                },
-                "Chicken": {
-                    "Stir Fries Chicken": ["Cashew chicken", "Chicken with garlic sauce", "Hunan chicken"],
-                    "Noodle Soups": ["Wonton soup with chicken", "Spicy chicken noodle soup", "Chicken noodle soup with egg drop"]
-                },
-            },
-        },
-        "Turkish": {
-            "Vegetarian": {
-                "Main Courses": {
-                    "Stuffed Vegetables": ["Imam bayildi", "Kabak dolmasi(stuffed zucchini)", "Biber dolmasi(Stuffed peppers)"],
-                    "Savory Fritters and Pancakes": ["Mucver", "Gozleme", "Cigar boreks"]
-                },
-                "Lentil and Chickpea": {
-                    "Stew and Soups": ["Lentil soup", "Chickpea stew", "Zucchini fritter soup"],
-                    "Salads and Colds": ["Chichkpea salad", "Lentil salad", "White bean salad"]
-                },
-            },   
-            "Non-Vegetarian": {
-                "Sea Food": {
-                    "Fresh Fish Dishes": ["Levrek izgara(seabass)", "Hamsili Pilav", "Alinazik with shrimp"],
-                    "Seafood Stews and Soups": ["Fish stew", "Seafood soup", "Dalyan dolmasi(stuffed mussels)"]
-                },
-                "Red Meat": {
-                    "Kebabs": ["Doner kebab", "Adana kebab", "Shish kebab"],
-                    "Stews and Braises": ["Hunkar begendi", "Osmanli kebab", "Iskender kebab"]
-                },
-                "Chicken": {
-                    "Grilled": ["Tavuk shish", "Alinazik", "Iskender chicken"],
-                    "Baked and Casserole": ["Chicken guvec", "Sultan's delight", "Chicken and pita bread casserole(pide)"]
-                }
-            }
-            
-        }
-}
+
 
 
 # Food Finder ASCII logo
