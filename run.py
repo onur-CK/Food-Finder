@@ -366,26 +366,29 @@ def ask_if_user_ready():
 
 def handle_instructions():
     instructions()
-    user_ready = ask_if_ready()
+    user_ready = ask_if_user_ready()
     return user_ready
 
 
-user_choice = input("Enter your choice (1 or 2): ")
-
-while user_choice not in ("1", "2"):
-    print("Invalid choice.Please enter 1 or 2.")
+def start_app():
+    intro()
     user_choice = input("Enter your choice (1 or 2): ")
 
-if user_choice == "1":
-    print("Let's get started!\n")
-elif user_choice == "2":
-    instructions()
-    user_ready = input("Are you ready to begin? (1. Yes / 2. No): ")
+    while user_choice not in ("1", "2"):
+        print("Invalid choice.Please enter 1 or 2.")
+        user_choice = input("Enter your choice (1 or 2): ")
 
-    while user_ready not in ("1", "2"):
-        print("Invalid choice. Please enter 1 or 2.")
-        user_ready = input("Are you ready to begin? (1. Yes / 2. No): ")
-        
+    if user_choice == "1":
+        print("Let's get started!\n")
+    elif user_choice == "2":
+        user_ready = handle_instructions()
+        if user_ready == "1":
+            print("Let's get started!\n ")
+        else:
+            print("Please select an option:")
+            start_app()
+
+start_app()
     
 # Loop to ask the user for the cuisine and food preferences 
 while True:
