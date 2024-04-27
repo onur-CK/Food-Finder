@@ -108,7 +108,7 @@ def get_suggestions(suggestions, cuisine, food_type, base_type):
             print(f"{i}. {sub_category}")
         sub_choice = input(f"Enter your choice (1 or {len(sub_categories)}):\n ")
         if sub_choice.isdigit() and 1 <= int(sub_choice) <= len(sub_categories):
-            selected_Sub_category = list(sub_categories)[int(sub_choice) - 1]
+            selected_sub_category = list(sub_categories)[int(sub_choice) - 1]
             return suggestions[cuisine][food_type][base_type][selected_sub_category]
         else:
             print ("Invalid choice. Please enter a number corresponding to the options.")
@@ -433,12 +433,12 @@ def start_app():
 
     if user_choice == "1":
         print("Let's get started!\n")
-        main() # Call the main function to begin displaying questions.
+        get_user_preferences(suggestions)
     elif user_choice == "2":
         user_ready = handle_instructions()
         if user_ready:
             print("Let's get started!\n ")
-            main()
+            get_user_preferences(suggestions)
         else: 
             print("Thanks for checking the instructions. Have a good day!")
         
