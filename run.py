@@ -341,19 +341,34 @@ Please select an option:
 2. See the instructions.                                                     
 
     """
-
 )
 
 
 def instructions():
-    
-    print("Food Finder App Instructions:")
-    print("1. Answer the following questions to receive food suggestions.")
-    print("2. Follow the prompts to select your preferred cuisine,\nfood type, and dish.")
-    print("3. Enjoy your personalized food recommendations!\n")
+    print(
+"""
+Food Finder App Instructions:
 
+1. Answer the following questions to receive food suggestions.
+2. Select your preferred cuisine, food type, and dish.
+3. Enjoy your personalized food recommendations!\n
+"""
+)
 
-intro()
+def ask_if_user_ready():
+    user_ready = input("Are you ready to begin (1. Yes . 2. No): ")
+
+    while user_ready not in ("1", "2"):
+        print("Invalid choice. Please enter 1 or 2.")
+        user_ready = input("Are you ready to begin? (1. Yes / 2. No): ")
+
+    return user_ready
+
+def handle_instructions():
+    instructions()
+    user_ready = ask_if_ready()
+    return user_ready
+
 
 user_choice = input("Enter your choice (1 or 2): ")
 
@@ -370,13 +385,8 @@ elif user_choice == "2":
     while user_ready not in ("1", "2"):
         print("Invalid choice. Please enter 1 or 2.")
         user_ready = input("Are you ready to begin? (1. Yes / 2. No): ")
-
-    if user_ready == "1":
-        print("Let's get started!\n")
-    else:
-        intro()
-       
-
+        
+    
 # Loop to ask the user for the cuisine and food preferences 
 while True:
     # Get the user's cuisine preference
