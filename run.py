@@ -85,16 +85,13 @@ def get_cuisine_choice():
         print("2. Turkish")
         choice = input("Enter your choice (1 or 2):\n ")
         # Validate input (to be sure that number is between 1 and 2)
-        if not choice.isdigit() or not (1 <= int(choice) <= 2):
-            print("Invalid choice. Please enter 1 or 2.\n")
-        else:    
-            cuisine_map = {
-                "1": "Chinese",
-                "2": "Turkish"
-            }
+        if choice in ("1", "2"):
+            cuisine_map = {"1": "Chinese", "2": "Turkish"}
             return cuisine_map[choice]
+        else:
+            print("Invalid choice. Please enter 1 or 2.\n ")
 
-
+            
 # Function to get user preferences for Vegetarian or Non-Vegetarian dishes    
 def get_food_type():
     """Get the user preference for Vegetarian or Non-Vegetarian dishes."""
