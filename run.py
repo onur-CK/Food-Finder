@@ -74,7 +74,7 @@ def get_user_preferences(suggestions):
         if food_type_choice not in ("1", "2"):
             print("Invalid choice. Please enter 1 or 2.\n ")    
             continue
-        food_type "Vegetarian" if food_type_choice == "1" else "Non-Vegetarian"
+        food_type = "Vegetarian" if food_type_choice == "1" else "Non-Vegetarian"
 
         base_preferences = get_base_preferences(suggestions, cuisine, food_type)    
         print(f"\nHere are 3 suggestions for {base_preferences['base']}:\n ")
@@ -86,7 +86,6 @@ def get_user_preferences(suggestions):
             break
     
 
-
 def get_base_preferences(suggestions, cuisine, food_type):
     while True:
         print(f"For your {food_type} {cuisine} dish, would you prefer:\n ")
@@ -96,9 +95,12 @@ def get_base_preferences(suggestions, cuisine, food_type):
         base_choice = input(f"Enter your choice (1 or {len(base_types)}):\n ")
         if base_choice.isdigit() and 1 <= int(base_choice) <= len(base_types):
             selected_base = list(base_types)[int(base_choice) - 1]
-            return selected_base
+            return {"base": selected_base, "suggestions": get_suggestions(suggestions, cuisine, food_type, selected_base)}
         else:
             print("Invalid choice. Please enter a number corresponding to the optins.\n ")
+
+
+
 
 
 # Function to get the user's choice of cuisine
