@@ -56,24 +56,30 @@ suggestions = {
 }
 
 
-def get_base_dish_preferences(suggestions, cuisine, food_type):
+def get_base_dish_choice(suggestions, cuisine, food_type):
     while True:
-        base_types = suggestions[cuisine][food_type].keys()
         print(f"For your {food_type} {cuisine} dish, would you prefer:\n ")
-        for i, option in enumerate(suggestions[cuisine][food_type][base_types], 1):
+        base_types = suggestions[cuisine][food_type].keys()
+        for i, base_type in enumerate(base_types, 1):
             print(f"{i}. {option}")
         base_choice = input(f"Enter your choice (1 to {len(base_types)}):\n ")
         if base_choice.isdigit() and 1 <= int(base_choice) <= len(base_types):
             selected_base = list(base_types)[int(base_choice) - 1]
-            food_options = suggestions[cuisine][ood_type][selected_base]
-            # Print 3 food suggestios based on user preferences
-            print(f"\nHere are 3 suggestions for {selected_base}:\n ")
-            for i in range(3):
-                print(f"{i+1}. {food_options[i]}")
             return selected_base
-        else:      
-            print("Invalid choice. Please enter a number corresponding to the options.\n ")      
-    
+        else:
+            print("Invalid choice. Please enter a number corresponding to the optins.\n ")
+
+
+def get_base_dish_preferences(suggestions, cuisine, food_type, base_type):
+    while True:
+        print(f"For your {food_type} {cuisine} dish, would you prefer:\n ")
+        for i, option in enumerate(suggestions[cuisine][food_type][base_types], 1):
+            print(f"{i}. {option}")
+        base_choice = input(f"Enter your choice (1 to {len(suggestions[cuisine][food_type][base_type])}):\n ")
+        if base_choice.isdigit() and 1 <= int(base_choice) <= len(base_types):
+            return suggestions[cuisine][food_type][base_type][int(base_choice) - 1]
+        else:
+            print("Invalid choice. Please enter a number corresponding to the options.\n ")
 
 # Function to get the user's choice of cuisine
 def get_cuisine_choice():
@@ -104,7 +110,8 @@ def get_food_type():
     else: 
         print("Invalid choice. Please enter 1 or 2.\n ")
          
-       
+    
+   
 def get_chinese_vegetarian_choice():
     """Gets the user's preferred base (Rice or Noodle) for Vegetarian dishes in Chinese cuisine."""
     while True:
