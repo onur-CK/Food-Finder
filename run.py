@@ -94,11 +94,15 @@ def get_base_preferences(suggestions, cuisine, food_type):
             print(f"{i}. {base_type}")
         base_choice = input(f"Enter your choice (1 or {len(base_types)}):\n ").strip()
         
+        if not base_choice:
+            print("Invalid  choice. Please enter a number corresponding to the options.\n ")
+            continue
+            
         if base_choice.isdigit() and 1 <= int(base_choice) <= len(base_types):
             selected_base = list(base_types)[int(base_choice) - 1]
             return {"base": selected_base, "suggestions": get_suggestions(suggestions, cuisine, food_type, selected_base)}
         else:
-            print("Invalid choice. Please enter a number corresponding to the optins.\n ")
+            print("Invalid choice. Please enter a number corresponding to the options.\n ")
 
 
 def get_suggestions(suggestions, cuisine, food_type, base_type):
@@ -125,12 +129,11 @@ def get_food_preferences(suggestions):
         vegetarian_choice = input("Enter your choice (1 or 2):\n ")
         if vegetarian_choice not in ("1", "2"):
             print("Invalid choice. Please enter 1 or 2.\n ")    
+
     food_type = "Vegetarian" if vegetarian_choice == "1" else "Non-Vegetarian"
-
-    base_type = get_base_dish_choice(suggestions, cuisine, food_type)    
-    return {"food_type": food_type, "base": base_type}
+    base_preferences = get_base_preferences(suggestions, cuisine, food_type)
+    return {"food_type": food_type, "base": base_preferences["base"]}
     
-
 
 # Food Finder ASCII logo
 def intro():
@@ -200,11 +203,8 @@ def start_app():
 def main():
     """Runs the main logics of the Food Finder app."""
     while True:
-        cuisine_preference = get_cuisine_choice()
-        print(f"You selected {cuisine_preference} cuisine.\n")
-
-        food_preferences = get_food_preferences(suggestions, cuisine_preference)
-        base_choice = get_base_dish_preferences(suggestions, cuisine_preference, food_preferences["food_type"], food_preferences["base"])
+        food_preferences = get_food_preferences(suggestions)
+        base_choice = get_base_preferences(suggestions, cuisine, food_preferences["food_type"])
         print(f"Here are 3 suggestions for {base_choice}:\n")
 
         while True:   
