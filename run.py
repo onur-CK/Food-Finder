@@ -70,21 +70,36 @@ def get_user_preferences(suggestions):
         print("Select your preferred cuisine:")
         print("1. Chinese")
         print("2. Turkish")
-        cuisine_choice = get_choice("Enter your choice (1. Yes / 2. No): ", [1,2]) 
-        cuisine = "Chinese" if cuisine_choice == 1 else "Turkish"
+        cuisine_choice = input("Enter your choice (1. Yes / 2. No): ") 
+        if not cuisine_choice:
+            print("Invalid choice. Please enter 1 or 2.")
+            continue
+        if cuisine_choice not in ("1", "2"):
+            print("Invalid choice. Please enter 1 or 2.")
+            continue
+        cuisine = "Chinese" if cuisine_choice == "1" else "Turkish"
 
         # Prompt for food type choice
         print("Select your preferred food type:")
         print("1. Vegetarian")
         print("2. Non-Vegetarian")
-        food_type_choice = get_choice("Enter your choice (1. Yes / 2. No): ", [1,2])
-        food_type = "Vegetarian" if food_type_choice == 1 else "Non-Vegetarian"
+        food_type_choice = input("Enter your choice (1. Yes / 2. No): ")
+        if not food_type_choice:
+            print("Invalid choice. Please enter 1 or 2.")
+            continue
+        if food_type_choice not in ("1", "2"):
+            print("Invalid choice. Please enter 1 or 2.")
+            continue
+        food_type = "Vegetarian" if food_type_choice == "1" else "Non-Vegetarian"
 
         base_preferences = get_base_preferences(suggestions, cuisine, food_type)    
         print(f"\nHere are 3 suggestions for {base_preferences['base']}:\n ")
         for i, suggestion in enumerate(base_preferences['suggestions'], 1):
             print(f"{i}. {suggestion}")
-        try_again = input("\nWould you like to try again? (1. Yes / 2. No):\n")
+        try_again = input("\nWould you like to try again? (1. Yes / 2. No):\n").strip()
+        if not try_again: # Check if the user input is empty
+            print("Invalid choice. Please enter (1. Yes / 2. No):\n")
+            continue
         if try_again != "1":
             print("Thanks for using Food Finder. Have a good day!")
             break
@@ -104,14 +119,26 @@ def get_base_preferences(suggestions, cuisine, food_type):
 
 def get_suggestions(suggestions, cuisine, food_type, base_type):
     while True:
-        print("How would you like your {base_type}")
+        print(f"How would you like your {base_type}?")
+        sub_categories = suggestions[cuisine][food_type][base_type].keys()
+        for i, sub_category in enumerate(sub_categories, 1):
+            print(f"{i}. {sub_category}")
+        sub_choice = get_choice(f"Enter your choice (1 or {len(sub_categories)}):\n ", range(1, len(sub_categories) + 1))
+        if sub_choice is not None:
+            selected_sub_category = list(sub_categories)[sub_choice -1]
+            return suggestions[cuisine][food_type][base_type][selected_sub_category]
+
+"""
+def get_suggestions(suggestions, cuisine, food_type, base_type):
+    while True:
+        print(f"How would you like your {base_type}")
         sub_categories = suggestions[cuisine][food_type][base_type].keys()
         for i, sub_category in enumerate(sub_categories, 1):
             print(f"{i}. {sub_category}")
         sub_choice = get_choice(f"Enter your choice (1 or {len(sub_categories)}):\n ", range(1, len(sub_categories) + 1))
         selected_sub_category = list(sub_categories)[sub_choice -1]
         return suggestions[cuisine][food_type][base_type][selected_sub_category]
-        
+"""       
 
 def get_food_preferences(suggestions):
     """Get the user preference for Vegetarian or Non-Vegetarian dishes."""
@@ -194,23 +221,24 @@ def start_app():
         else: 
             print("Thanks for checking the instructions. Have a good day!")
         
+
 def main():
     """Runs the main logics of the Food Finder app."""
     while True:
-        food_preferences = get_food_preferences(suggestions)
-        base_choice = get_base_preferences(suggestions, cuisine, food_preferences["food_type"])
-        print(f"Here are 3 suggestions for {base_choice}:\n")
-
-        while True:   
-            try_again = input("Would you like to try again? (1. Yes / 2. No):\n ").strip()
-            if try_again == "":
-                print("Invalid choice. Please enter 1 or 2.:\n")
-            elif try_again in ("1", "2"):
-                break
-            else:
-                print("Invalid choice. Please enter 1 or 2.:\n")
+        start_app()
+        
+        try_again = input("Would you like to try again? (1. Yes / 2. No):\n ").strip()
+        if try_again == "":
+            print("Invalid choice. Please enter 1 or 2.:\n ")
+            continue
+        if try_again == "2":
+            print("Thanks for trying Food Finder.\nHave a good day.") 
+            break
         if try_again != "1":
-            print("Thanks for trying Food Finder.\nHave a good day.")
-            
+            print("Invalid choice. Please enter 1 or 2.:\n ")
+            continue # Restart the loop to allow user to try again
+
 if __name__ == "__main__":  
-    start_app()
+    main()          
+
+            
