@@ -118,6 +118,7 @@ def get_user_preferences(suggestions):
                 print("Invalid choice. Please enter (1. Yes / 2. No):\n ")
                 continue
             if try_again == "2":
+                clear_screen()
                 print("Thanks for using Food Finder. Have a good day!")
                 return
             break
@@ -197,6 +198,7 @@ Please select an option:
 
 
 def instructions():
+    clear_screen()
     print(
 """
 Food Finder App Instructions:
@@ -208,13 +210,17 @@ Food Finder App Instructions:
 )
 
 def ask_if_user_ready():
-    user_ready = input("Are you ready to begin (1. Yes . 2. No): ")
+    while True:
+        user_ready = input("Are you ready to begin (1. Yes . 2. No): ")
+        if user_ready == "1":
+            return True
+        elif user_ready == "2":
+           clear_screen()
+           print("Thanks for checking the instructions. Have a good day!")
+           return False
+        else: 
+            print("Invalid choice. Please enter 1 or 2.")
 
-    while user_ready not in ("1", "2"):
-        print("Invalid choice. Please enter 1 or 2.")
-        user_ready = input("Are you ready to begin? (1. Yes / 2. No): ")
-
-    return user_ready
 
 def handle_instructions():
     instructions()
@@ -240,7 +246,7 @@ def start_app():
             print("Let's get started!\n ")
             get_user_preferences(suggestions)
         else: 
-            print("Thanks for checking the instructions. Have a good day!")
+            return
         
 
 def main():
@@ -260,7 +266,6 @@ def main():
             continue # Restart the loop to allow user to try again
 
 if __name__ == "__main__":  
-    start_app()
-    get_user_preferences(suggestions)          
+    main()          
 
             
