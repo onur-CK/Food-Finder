@@ -55,6 +55,14 @@ suggestions = {
         }
 }
 
+def get_choice(prompt, options):
+    """Get user choice from an options list."""
+    while True:
+        choice = input(prompt).strip()
+        if choice.isdigit() and int(choice) in options:
+            return int(choice)
+        else:
+            print("Invalid choice. Please enter a valid option.")
 
 def get_user_preferences(suggestions):
     while True:
