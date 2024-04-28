@@ -73,10 +73,11 @@ def get_choice(prompt, options):
 def get_user_preferences(suggestions):
     # Prompt for cuisine choice
     while True:
-        print("Select your preferred cuisine:")
+        clear_screen()
+        print("Select your preferred cuisine:\n ")
         print("1. Chinese")
         print("2. Turkish")
-        cuisine_choice = input("Enter your choice (1. Yes / 2. No): ").strip() 
+        cuisine_choice = input("\nEnter your choice (1. Yes / 2. No): ").strip() 
         if not cuisine_choice:
             print("Invalid choice. Please enter 1 or 2.")
             continue
@@ -87,10 +88,11 @@ def get_user_preferences(suggestions):
 
         # Prompt for food type choice
         while True:
-            print("Select your preferred food type:")
+            clear_screen()
+            print("Select your preferred food type:\n ")
             print("1. Vegetarian")
             print("2. Non-Vegetarian")
-            food_type_choice = input("Enter your choice (1. Yes / 2. No): ").strip()
+            food_type_choice = input("\nEnter your choice (1. Yes / 2. No): ").strip()
             if not food_type_choice:
                 print("Invalid choice. Please enter 1 or 2.")
                 continue
@@ -100,7 +102,8 @@ def get_user_preferences(suggestions):
             food_type = "Vegetarian" if food_type_choice == "1" else "Non-Vegetarian"
             break
 
-        base_preferences = get_base_preferences(suggestions, cuisine, food_type)    
+        base_preferences = get_base_preferences(suggestions, cuisine, food_type)  
+        clear_screen()  
         print(f"\nHere are 3 suggestions for {base_preferences['base']}:\n ")
         for i, suggestion in enumerate(base_preferences['suggestions'], 1):
             print(f"{i}. {suggestion}")
@@ -122,6 +125,7 @@ def get_user_preferences(suggestions):
 
 def get_base_preferences(suggestions, cuisine, food_type):
     while True:
+        clear_screen()
         print(f"For your {food_type} {cuisine} dish, would you prefer:\n ")
         base_types = suggestions[cuisine][food_type].keys()
         for i, base_type in enumerate(base_types, 1):
@@ -134,6 +138,7 @@ def get_base_preferences(suggestions, cuisine, food_type):
 
 def get_suggestions(suggestions, cuisine, food_type, base_type):
     while True:
+        clear_screen()
         print(f"How would you like your {base_type}?")
         sub_categories = suggestions[cuisine][food_type][base_type].keys()
         for i, sub_category in enumerate(sub_categories, 1):
@@ -218,6 +223,7 @@ def handle_instructions():
 
 
 def start_app():
+    clear_screen()
     intro()
     user_choice = input("Enter your choice (1 or 2): ")
 
@@ -254,6 +260,7 @@ def main():
             continue # Restart the loop to allow user to try again
 
 if __name__ == "__main__":  
-    main()          
+    start_app()
+    get_user_preferences(suggestions)          
 
             
