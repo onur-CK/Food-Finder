@@ -149,17 +149,7 @@ def get_suggestions(suggestions, cuisine, food_type, base_type):
             selected_sub_category = list(sub_categories)[sub_choice -1]
             return suggestions[cuisine][food_type][base_type][selected_sub_category]
 
-"""
-def get_suggestions(suggestions, cuisine, food_type, base_type):
-    while True:
-        print(f"How would you like your {base_type}")
-        sub_categories = suggestions[cuisine][food_type][base_type].keys()
-        for i, sub_category in enumerate(sub_categories, 1):
-            print(f"{i}. {sub_category}")
-        sub_choice = get_choice(f"Enter your choice (1 or {len(sub_categories)}):\n ", range(1, len(sub_categories) + 1))
-        selected_sub_category = list(sub_categories)[sub_choice -1]
-        return suggestions[cuisine][food_type][base_type][selected_sub_category]
-"""       
+  
 
 def get_food_preferences(suggestions):
     """Get the user preference for Vegetarian or Non-Vegetarian dishes."""
