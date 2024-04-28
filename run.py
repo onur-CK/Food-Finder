@@ -65,24 +65,20 @@ def get_choice(prompt, options):
             print("Invalid choice. Please enter a valid option.")
 
 def get_user_preferences(suggestions):
+    # Prompt for cuisine choice
     while True:
         print("Select your preferred cuisine:")
         print("1. Chinese")
         print("2. Turkish")
-        cuisine_choice = input('Enter your choice (1 or 2):\n ')
-        if cuisine_choice not in ("1", "2"):
-            print("Invalid choice. Please enter 1 or 2.")
-            continue
-        cuisine = "Chinese" if cuisine_choice == "1" else "Turkish"
+        cuisine_choice = get_choice("Enter your choice (1. Yes / 2. No): ", [1,2]) 
+        cuisine = "Chinese" if cuisine_choice == 1 else "Turkish"
 
+        # Prompt for food type choice
         print("Select your preferred food type:")
         print("1. Vegetarian")
         print("2. Non-Vegetarian")
-        food_type_choice = input("Enter your choice (1 or 2):\n ")
-        if food_type_choice not in ("1", "2"):
-            print("Invalid choice. Please enter 1 or 2.\n ")    
-            continue
-        food_type = "Vegetarian" if food_type_choice == "1" else "Non-Vegetarian"
+        food_type_choice = get_choice("Enter your choice (1. Yes / 2. No): ", [1,2])
+        food_type = "Vegetarian" if food_type_choice == 1 else "Non-Vegetarian"
 
         base_preferences = get_base_preferences(suggestions, cuisine, food_type)    
         print(f"\nHere are 3 suggestions for {base_preferences['base']}:\n ")
@@ -92,7 +88,7 @@ def get_user_preferences(suggestions):
         if try_again != "1":
             print("Thanks for using Food Finder. Have a good day!")
             break
-    
+
 
 def get_base_preferences(suggestions, cuisine, food_type):
     while True:
@@ -100,17 +96,10 @@ def get_base_preferences(suggestions, cuisine, food_type):
         base_types = suggestions[cuisine][food_type].keys()
         for i, base_type in enumerate(base_types, 1):
             print(f"{i}. {base_type}")
-        base_choice = input(f"Enter your choice (1 or {len(base_types)}):\n ").strip()
+        base_choice = get_choice(f"Enter your choice (1 or {len(base_types)}): ", range(1, len(base_types) + 1)) 
         
-        if not base_choice:
-            print("Invalid  choice. Please enter a number corresponding to the options.\n ")
-            continue
-            
-        if base_choice.isdigit() and 1 <= int(base_choice) <= len(base_types):
-            selected_base = list(base_types)[int(base_choice) - 1]
-            return {"base": selected_base, "suggestions": get_suggestions(suggestions, cuisine, food_type, selected_base)}
-        else:
-            print("Invalid choice. Please enter a number corresponding to the options.\n ")
+        selected_base = list(base_types)[base_choice - 1]
+        return {"base": selected_base, "suggestions": get_suggestions(suggestions, cuisine, food_type, selected_base)}
 
 
 def get_suggestions(suggestions, cuisine, food_type, base_type):
@@ -119,13 +108,10 @@ def get_suggestions(suggestions, cuisine, food_type, base_type):
         sub_categories = suggestions[cuisine][food_type][base_type].keys()
         for i, sub_category in enumerate(sub_categories, 1):
             print(f"{i}. {sub_category}")
-        sub_choice = input(f"Enter your choice (1 or {len(sub_categories)}):\n ")
-        if sub_choice.isdigit() and 1 <= int(sub_choice) <= len(sub_categories):
-            selected_sub_category = list(sub_categories)[int(sub_choice) - 1]
-            return suggestions[cuisine][food_type][base_type][selected_sub_category]
-        else:
-            print ("Invalid choice. Please enter a number corresponding to the options.")
-
+        sub_choice = get_choice(f"Enter your choice (1 or {len(sub_categories)}):\n ", range(1, len(sub_categories) + 1))
+        selected_sub_category = list(sub_categories)[sub_choice -1]
+        return suggestions[cuisine][food_type][base_type][selected_sub_category]
+        
 
 def get_food_preferences(suggestions):
     """Get the user preference for Vegetarian or Non-Vegetarian dishes."""
