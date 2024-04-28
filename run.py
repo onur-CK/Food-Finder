@@ -92,7 +92,8 @@ def get_base_preferences(suggestions, cuisine, food_type):
         base_types = suggestions[cuisine][food_type].keys()
         for i, base_type in enumerate(base_types, 1):
             print(f"{i}. {base_type}")
-        base_choice = input(f"Enter your choice (1 or {len(base_types)}):\n ")
+        base_choice = input(f"Enter your choice (1 or {len(base_types)}):\n ").strip()
+        
         if base_choice.isdigit() and 1 <= int(base_choice) <= len(base_types):
             selected_base = list(base_types)[int(base_choice) - 1]
             return {"base": selected_base, "suggestions": get_suggestions(suggestions, cuisine, food_type, selected_base)}
@@ -114,24 +115,6 @@ def get_suggestions(suggestions, cuisine, food_type, base_type):
             print ("Invalid choice. Please enter a number corresponding to the options.")
 
 
-
-# Function to get the user's choice of cuisine
-def get_cuisine_choice():
-    """
-    Gets the user input for choice of cuisine with validation using the numbered options."""
-    while True:
-        print("Select your preferred cuisine:")
-        print("1. Chinese")
-        print("2. Turkish")
-        choice = input("Enter your choice (1 or 2):\n ")
-        # Validate input (to be sure that number is between 1 and 2)
-        if choice in ("1", "2"):
-            cuisine_map = {"1": "Chinese", "2": "Turkish"}
-            return cuisine_map[choice]
-        else:
-            print("Invalid choice. Please enter 1 or 2.\n ")
-
-                
 def get_food_preferences(suggestions):
     """Get the user preference for Vegetarian or Non-Vegetarian dishes."""
     vegetarian_choice = None
@@ -147,6 +130,7 @@ def get_food_preferences(suggestions):
     base_type = get_base_dish_choice(suggestions, cuisine, food_type)    
     return {"food_type": food_type, "base": base_type}
     
+
 
 # Food Finder ASCII logo
 def intro():
@@ -222,14 +206,17 @@ def main():
         food_preferences = get_food_preferences(suggestions, cuisine_preference)
         base_choice = get_base_dish_preferences(suggestions, cuisine_preference, food_preferences["food_type"], food_preferences["base"])
         print(f"Here are 3 suggestions for {base_choice}:\n")
-            
-        try_again = input("Would you like to try again? (1. Yes / 2. No):\n ")
-        while try_again not in ("1", "2"):
-            print("Invalid choice. Please enter 1 or 2.:\n ")
-            try_again = input("Would you like to try again? (1. Yes / 2. No):\n ")
-        if try_again != "1":
-            print("Thanks for trying to Food Finder.\nHave a good day.")
-            break  
 
+        while True:   
+            try_again = input("Would you like to try again? (1. Yes / 2. No):\n ").strip()
+            if try_again == "":
+                print("Invalid choice. Please enter 1 or 2.:\n")
+            elif try_again in ("1", "2"):
+                break
+            else:
+                print("Invalid choice. Please enter 1 or 2.:\n")
+        if try_again != "1":
+            print("Thanks for trying Food Finder.\nHave a good day.")
+            
 if __name__ == "__main__":  
     start_app()
