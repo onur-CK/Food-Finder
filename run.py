@@ -1,3 +1,9 @@
+import os
+
+def clear_screen():
+    os.system('cls' if os.name == 'nt' else 'clear')
+
+
 """Gets the user's preferred base for both Chinese and Turkish cuisine."""
 suggestions = {
         "Chinese": {
