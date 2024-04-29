@@ -1,262 +1,363 @@
-Skip to content
-Navigation Menu
-Kay-ddggxh
-/
-CI-PP3_hangman
+# FOOD FINDER ...
 
-Type / to search
+In this terminal based app, the user answers questions and at the end gets 3 food suggestions based on the user preferences.
 
-Code
-Issues
-Pull requests
-Actions
-Projects
-Security
-Insights
-Commit
-Update README: include restart game feature
- main
-@Kay-ddggxh
-Kay-ddggxh committed on Aug 11, 2022 
-1 parent 285e7e8
-commit 8072b58
- 
-Showing 2 changed files with 7 additions and 0 deletions.
-Filter changed files
-  7 changes: 7 additions & 0 deletions7  
-README.md
-# Get Hung ...
-... for the lamb, the sheep or the whole herd.
-In this terminal based game of classic Hangman, the player tries to guess a word letter by letter before running out of lives and being sent to the gallows.
-This project was built with Python3 as the "Python's Essentials" Project (portfolio project 3) for Code Insitute. 
-[Link to live site](https://get-hung.herokuapp.com/)
-![Responsive mock-up](assets/images/mockup.JPG)
+This project was built with Python as the "Python's Essentials" Project (portfolio project 3) for Code Insitute.(with CI template)
+
+[Link to live site](https://food-finder123-d49d8309cda0.herokuapp.com/)
+
+![Am I Responsive](assets/images/am_i_responsive.PNG)
+
+
 ## Index - Table of Contents
+
 - [Planning](#planning)
+
 - [Design](#design)
+
 - [UX](#ux)
     - [Programm Goals](#programm-goals)
     - [User Stories](#user-stories)
+
 - [Features](#features)
     - [Existing Features](#existing-features)
     - [Future Features](#possible-future-features)
+
 - [Data Model](#data-model)
+
 - [Testing](#testing)
     - [Validator Testing](#validator-testing)
     - [Browser Testing](#browser-testing)
     - [Testing User Stories](#testing-user-stories-functionality)
+
 - [Debugging](#debugging)
     - [Fixed bugs](#fixed-bugs)
     - [Unfixed bugs](#unfixed-bugs)
+
 - [Deployment](#deployment)
+
 - [Credits](#credits)
     - [Data](#data)
     - [Code](#code)
     - [Styling](#styling)
+
+
 ## Planning
+
 The following flowchart (created with [daigrams.net](https://app.diagrams.net/)) visualizes the planning process for this application.
-![Flowchart](assets/images/GetHungFlow1.1.png)
+
+![Flowchart](assets/images/Template.PNG)
+
+
 ## Design
-As this is simple terminal based application, the design process for the user interface was limited.
-Different colour choices and bold text are used in order to highlight and categorise messages to the user.
-For example, error messages and wrong guesses are displayed in red, as is the gallows graphics to signify a negative event.
-The word itself is displayed green for every correct guess.
-General information, such as already guessed letters, is either displayed in yellow or simply bold.
-Emojis are used in the introduction and termination of the game (both won or lost) to make up for the general lack of images.
+
+The design process for the user interface was limited.
+
+Error messages are displayed to guide user to enter valid inputs.
+
+Questions are displayed in a cleared console to make the interface better visually.
+
+Used 2 options for user to check the instructions or begin directly.
+
 ## UX
+
 ### Programm Goals
-The goal of this programm is to provide the user with a simple, easy to understand and play game of hangman that can be played multiple times without the challenge being repeated.
+
+The goal of this programm is to provide the user with a simple and easy way of food suggestions.
+
 ### User Stories
+
 **As a user I want to**
-- be able to read an introduction when first loading the programm
-- read the rules to the game in short and consice text
-- choose a difficulty level
-- know how many lives I start off with
-- be informed if my data input is not valid and why
-- see which letters I have already guessed
-- see the word being displayed for every correct guess
-- be informed how many lives I have left after a wrong guess
-- see a graphic visualising my lost lives
-- learn the word to be guessed after losing the game
-- see the full word displayed after completing the game successfully
-- know when the game is over (won or lost)
-- be able to restart the game or not when after it's finished
+
+- be able to check the instructions when first loading the programm
+- check the instructions of the game in short and simple text
+- be informed if my data input is not valid
+- be able to restart the app or not when after it's finished
+- be able to see several food subcategories as options
+- get at least a few suggestions at the end based on my answers
 
 **As a site administrator I want to**
 
-- be able to make modifications to the game (see [future features](#possible-future-features))
-- offer the user a short yet entertaining game
+- be able to make modifications to the app
+- be able to suggest many more food options to user
+- be able to suggest foods based on protein and carbohydrate needs
+- be able to add more cuisines
+
+
 ## Features
+
 ### Existing Features
+
 **Logo**
-- Displays game title using ASCII
-![logo](assets/images/logo.JPG)
-**Introduction and Rules**
-- Gives the user a brief run through the game and how to play it
-![game intro](assets/images/intro-rules.JPG)
-**Level choice**
-- Allows user to choose one of three difficulty levels
-![level choice](assets/images/level-choice.JPG)
+- Displays app title using ASCII
+
+![logo](assets/images/logo.PNG)
+
+**Welcome Screen**
+- Displayed the options to the user for starting the app or seeing the instructions
+
+![welcome screen](assets/images/welcome_screen.PNG)
+
+**Instructions**
+- Gives the user a information through the app and how to use it
+
+![instructions](assets/images/instructions.PNG)
+
+**food options**
+- Allows user to choose different types of foods
+
+![choice of foods](assets/images/food_options.PNG)
+
 **Invalid Data Error**
 - Informs the user if input data was not valid
 - Tells the user which data type is required and what was typed incorrectly
-- Displays for invalid level and letter input
-![invalid level](assets/images/invalid-level.JPG)
-![invalid letter](assets/images/invalid-letter.JPG)
-**Used letters display**
-- Lists the letters that the user has guessed
-![used letters](assets/images/used-letters.JPG)
-**Duplicated letter message**
-- Informs the user when a letter guess is duplicate
-- Tell user to guess a different letter
-![duplicate letter](assets/images/duplicate-letter.JPG)
-**Word display**
-- Displays all correctly guessed letters
-- Gradually builds entire word
-![word display](assets/images/word-display.JPG)
-**Lives count**
-- Informs user of remaining lives after each wrong guess
-![lives count](assets/images/lives-count.JPG)
-**Gallows graphics**
-- Visualises the loss of live by adding a section to the gallows graphics for each wrong guess
-![gallows graphics](assets/images/gallows.JPG)
-**Game won message**
-- Informs and congratulates user when game is won
-- Shows after fully displayed word
-![game won message](assets/images/game-won.JPG)
-**Game lost message**
-- Informs user when game is lost
-- Reveals to user the word that was to be guessed
+- Displays errors for invalid inputs
 
-![game lost message](assets/images/game-lost.JPG)
+![invalid choice error](assets/images/invalid_input.PNG)
 
-**Restart Game option**
-- Offers user the choice to play again after finishing the game
+**Food suggestions**
+- Displays 3 food suggestions at the end
+- Suggestions are based on the user preferences
 
-![restart game](assets/images/restart-game.JPG)
+![food suggestions](assets/images/3_suggestions_at_the_end.PNG)
+
+**Simple Interface**
+- Instead of polluted console like this:
+
+![simple interface](assets/images/terminal.PNG)
+
+- Used a simple design to display all the questions in a cleared console
+
+![simple interface](assets/images/interface-options.PNG)
+
+- Also errors are displayed under the questions instead of a cleared console to avoid the user having to remember the question after getting an error
+
+![simple interface](assets/images/error_under_questions.PNG)
+
+**Restart the app option**
+- Offers user the choice to try again after finishing all the questions
+
+![restart app](assets/images/try_again.PNG)
 
 
 ### Possible Future Features
 
-**Typing effect**
-- Will type out print statements in terminal letter by letter to mimic type writer effect
-**Single display game progression**
-- Game progression will show in terminal as progressively building a single display
-- This will prevent a continues flow of output and down-scrolling
+**Food Icons**
+- Will add food icons for a better user interface visuals
+
+**Ingredients based suggestions**
+- Will add a function to suggest foods based on ingredients data entered by user.
+
 ## Data Model
-*Utilising Class and OOP*
-For the sake of using Python ```class``` in this project I created the ```class Level``` which creates three different instances of ```Level```, according to the user choice of difficulty level.
-```Level``` has a property of ```self.level```. Its ```decide_level``` method determines which skill level the will be plaid at, depending on the user input.
-*Data Validation*
-To make use of the ```try``` and ```except``` statements, I created the two functions ```validate_level``` and ```validate_letter```. Both functions raise a value error if data input by the user is not valid for each specific case. 
-In the initial version invalid data was simply handled with a print statement in an ```else``` clause (which may have sufficed in the case of this simple application). But for the sake of writing industry compliant code, I decided to outsource data validation to a specific function that raises a proper error. 
+
+**Data Validation**
+
+- The `get_choice()` function ensures data validation by prompting the user to make a choice from a given set of options. It repeatedly prompts the user until a valid choice is made, preventing invalid inputs.
+
+**Function Flow**
+
+- `start_app():`;
+This function initiates the application and displays the introductory message.
+It prompts the user to select an option to either begin answering questions or view instructions.
+
+- `get_user_preferences(suggestions)`;
+This function guides the user through selecting their preferred cuisine and dietary type.
+It calls `get_choice()` to prompt the user for input and `get_base_preferences()` to retrieve base preferences.
+
+- `get_base_preferences(suggestions, cuisine, food_type):`;
+This function retrieves base preferences based on the selected cuisine and dietary type.
+It calls `get_suggestions()` to retrieve specific food suggestions for the selected base type.
+
+- `get_suggestions(suggestions, cuisine, food_type, base_type):`;
+This function fetches specific food suggestions based on the selected cuisine, dietary type, and base type.
+
+**Assigning the Classes to Functions**
+
+Each function in the codebase serves a specific purpose:
+
+- `get_choice():`: Handles user input for selecting options.
+- `get_user_preferences():`: Guides the user through selecting cuisine and dietary preferences.
+- `get_base_preferences():`: Retrieves base preferences based on cuisine and dietary type.
+- `get_suggestions():`: Fetches specific food suggestions based on cuisine, dietary type, and base type.
+
+**Interaction with the Suggestions Dictionary**
+
+- The suggestions dictionary holds the data model, organizing food suggestions by cuisine, dietary preferences, base types, and specific dishes.
+- Functions like `get_user_preferences()`, `get_base_preferences()`, and `get_suggestions()` interact with this dictionary to retrieve relevant information based on user selections.
+
+**Error Handling**
+
+- The functions incorporate error handling mechanisms to ensure smooth user interactions and prevent crashes due to invalid inputs.
+- Invalid choices prompt the user to enter a valid option until correct input is provided, enhancing the user experience and application robustness.
+
+**Overall Functionality**
+
+- The combined functionality of these functions allows the application to guide users through selecting their preferred cuisine, dietary type, and specific dish preferences, ultimately providing personalized food suggestions based on their inputs.
+
 ## Testing
+
 ### Validator Testing
+
 - HTML, CSS and JavaScript validation does not apply to this project. The template provided by Code Institute as provided to all students is assumed to be tested for the above.
 No further change or manipulation of the template's default HTML, CSS and JavaScript files has been performed.
-- Python Validator [PEP8](http://pep8online.com/)
-    - **Error**: Line too long on 13 lines of code
-    - **Solution**: Break up lines of code using ``` \ ```
-    No further errors or warnings.
-    ![PEP8 results](assets/images/pep8-final-result.JPG)
+
+- Python Validator [CI Python Linter](https://pep8ci.herokuapp.com/)
+
+- **Errors**
+
+![PEP8 results](assets/images/python_linter.PNG)
+
+- **After fixes**
+
+No further errors or warnings.
+
+![PEP8 results fixed](assets/images/python_linter_no_error.PNG)
+
 - Performance, Accessibility, SEO, Best Practices (Lighthouse Chrome DevTools)
-    ![Lighthouse results](assets/images/lighthouse-results.JPG)
-    As SEO was not an objective of this particular project, I chose to be content with a rating that is barely below 90. 
+
+![Lighthouse results](assets/images/lighthouse_test.PNG)
+
+
+
 ### Browser Testing
+
 Ensuring all parts of the programm function as expected in all major browsers.
+
 | Browser     | Layout      | Functionality |
 | :---------: | :----------:| :-----------: |
 | Chrome      | ✔          | ✔             |
 | Edge        | ✔          | ✔             |
 | Firefox     | ✔          | ✔             |
-| Safari      | ✔          | ✔             |
-| IE          |deprecated by Microsoft, not tested|
+
+
 ### Testing User Stories (Functionality)
+
 | Expectation (As a user, I want to...)  | Result (As a user, I...)    |
 | :---------------------------------: | :------------------------------:|
-| be able to read an introduction when first loading the programm | see a quick game introduction print out on the screen when the programm loads |
-| read the rules to the game in short and consice text | see the game rules explained clearly as part of the introduction |
-| choose a difficulty level | can choose between 3 levels: easy, medium, hard |
-| know how many lives I start off with | I am clearly informed that I start off with 10 lives |
-| be informed if my data input is not valid and why | see an error message after I input invalid data, telling me what data type is required |
-| see which letters I have already guessed | can see my already guessed letters listed out on screen |
-| see the word being displayed for every correct guess | can see every correct letter being added to the word, spelling it out gradually |
-| be informed how many lives I have left after a wrong guess | I am told how many remaining lives I have after a wrong guess |
-| see a graphic visualising my lost lives | can see the gallows graphips building a section at a time for each wrong guess |
-| learn the word to be guessed after losing the game | can read the word printed out on screen after I lost the game |
-| see the full word displayed after completing the game successfully | can read the word fully spelled out after guessing it correctly |
-| know when the game is over (won or lost) | can read a message telling me I either won or lost the game when the game terminates |
-| be able to restart the game or not when after it's finished | can choose between a Y/N option to restart the game after finishing |
+| be able to check the instructions when first loading the program | see the instructions when first loading the program |
+| check the instructions of the game in short and simple text | see the instructions with a very simple design |
+| be informed if my data input is not valid | see an error message after I input invalid data, telling me what data type is required |
+| be able to restart the app or not when after it's finished | can choose to restart the app after finishing |
+| be able to see several food subcategories as options | see several food categories as an option |
+| get at least a few suggestions at the end based on my answers | see 3 food suggestions at the end |
+
 
 ## Debugging
 
 ### Fixed Bugs
+
 **Formatting**
-To guarantee consistent line breaks, whitespaces and indentation, run.py and words.py were formatted using [Black Playground](https://black.vercel.app/)
-**Word not displaying fully when game won**:
-After entering the last letter of the fully guessed word, the last letter is not added to the word display. Therefore the finished word doesn't display properly.
+
+To guarantee consistent line breaks, whitespaces and indentation, run.py was formatted by me completely manually by checking the erros by using:
+
+![CI Python Linter](https://pep8ci.herokuapp.com/)
+
+**Word not displaying fully when game won**
+
+- After choosing the Non-Vegetarian category proram displays chicken subcategory question instead of sea food when user press 1.
+
+![bug](assets/images/chicken-instead_of_sea_food_bug.PNG)
+
 *Solution*:
-Run display_word function again when condition for game completion is met:
-```
-elif len(word_letters) == 0:
-    display_word()
-    print("🎉 Well done! You guessed the whole word 🎉")
-```
+
+![fix](assets/images/chicken_instead_of_sea_food_fix.PNG)
+
+
+
+- Can't reach the food types to display next related question.
+
+![bug](assets/images/key_error_bug.PNG)
+
+*Solution*:
+
+Fixed the list by making name changes to match the keys.
+
+![fix](assets/images/key_error_fix.PNG)
+
+
+
+- Can't display error after adding `clear_screen()` function
+
+![bug](assets/images/display_error_bug.PNG)
+
+*Solution*:
+
+Fixed the bug by deleting the second `clear_screen()` function
+
+![fix](assets/images/display_error_fix.PNG)
+
+
 ### Unfixed Bugs
+
 No unfixed bugs to date.
+
 ## Deployment
+
 This project was deployed with Heroku using Code Institute's mock terminal as provided with the Python Essentials template.
+
 To deploy:
+
 - Clone or fork this public repository
-- Create a Heroku account (if not already existing)
+- Create a Heroku account
 - Create a new app with Heroku
 - In **Settings**, add 2 buildpacks:
     - ```Python```
     - ```NodeJS```
     
     Ensure the buildpacks are created in that order!
+
 - Allowing Heroku access to GitHub, link the new app to the relevant repository
 - Choose whether or not to enable **Automatic Deploys**. If enabled, the deployed app will update automatically with each push to GitHub
 - Click **Deploy**
-## Credits
-### Data
-- **Word List**: 
-    [This list](https://www.randomlists.com/data/words.json) was used as supplied by [this StackOverflow post](https://stackoverflow.com/questions/594273/how-to-pick-a-random-english-word-from-a-list)
-    Using MS Word I manually removed all words containing "-" to simplify the game functionality. Also, I adapted the spelling to UK English where it originally differed. 
-- **Logo**:
-    [Text to ASCII Art Generator](https://patorjk.com/software/taag/#p=display&f=Graffiti&t=Type%20Something%20)
-    Font: Ogre.
-### Code
-- **Template and Terminal**
-    [Python Essentials Template](https://github.com/Code-Institute-Org/python-essentials-template) provided by Code Institute 
-- **Hangman Game**
-    [Tutorial by Kylie Ying](https://www.youtube.com/watch?v=8ext9G7xspg&t=1465s)
-    Code was adapted to meet granular function criteria
-- **Hangman ascii visualisation**
-    Taken from [tutorial repo](https://github.com/kying18/hangman/blob/master/hangman_visual.py)
-### Styling
-- **Colours**
-    Built-in module [Colorama](https://github.com/techwithtim/ColoredTextInPython/blob/main/main.py)
-- **Timing**
-    [time module](https://www.freecodecamp.org/news/the-python-sleep-function-how-to-make-python-wait-a-few-seconds-before-continuing-with-example-commands/#:~:text=Make%20your%20time%20delay%20specific,after%20a%20slight%20delay.%22) and sleep() function
- Binary file addedBIN +20.6 KB 
-assets/images/restart-game.JPG
 
-0 comments on commit 8072b58
-@onur-CK
-Comment
- 
-Leave a comment
- 
- You’re not receiving notifications from this thread.
-Footer
-© 2024 GitHub, Inc.
-Footer navigation
-Terms
-Privacy
-Security
-Status
-Docs
-Contact
-Manage cookies
-Do not share my personal information
+## Credits
+
+### Data
+
+- **Food List**
+
+[Foods](https://www.bbcgoodfood.com/)
+[Foods-2](https://www.taste.com.au/)
+
+I created my food suggestions list by using these two websites.
+
+- **Logo**:
+
+    [Text to ASCII Art Generator](https://patorjk.com/software/taag/#p=display&f=Graffiti&t=Type%20Something%20)
+
+    
+### Code
+
+- **Template and Terminal**
+
+    [Python Essentials Template](https://github.com/Code-Institute-Org/python-essentials-template) provided by Code Institute 
+
+- **Food Finder**
+
+I used these tutorials to improve my understanding for;
+- creating lists of list,
+- arguments and parameters,
+- data types,
+- user inputs,
+- loops,
+- dictionaries and sets,
+- f strings,
+- classes and objects,
+- functions
+
+Didn't use any specific code by adopting from any tutorials or google.
+
+[Tutorial by Dave Gray](https://www.youtube.com/watch?v=qwAFL1597eM&t=14507s)
+[Tutorial by Caleb Curry](https://www.youtube.com/watch?v=i_ZEaE5vfE0)
+[Tutorial by Caleb Curry](https://www.youtube.com/watch?v=jE0nVl8iTFI&t=118s)
+
+- `clear_screen():`
+
+[DelftStack](https://www.delftstack.com/howto/python/python-clear-console/)
+
+
+- Am I Responsive 
+
+Am I Responsive screenshots are captured by downloading Ignore X-Frame.
+
+[Ignore X-Frame](https://chromewebstore.google.com/detail/ignore-x-frame-headers/gleekbfjekiniecknbkamfmkohkpodhe)

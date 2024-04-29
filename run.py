@@ -156,6 +156,7 @@ def get_choice(prompt, options):
             print("Invalid choice. Please enter a valid option.")
 
 
+# Function to get user preferences for cuisine and food type
 def get_user_preferences(suggestions):
     while True:
         # Prompt for cuisine choice
@@ -201,6 +202,7 @@ def get_user_preferences(suggestions):
                 print("Invalid choice. Please enter 1 or 2.")
 
 
+# Function to get user preferences for base type
 def get_base_preferences(suggestions, cuisine, food_type):
     while True:
         clear_screen()
@@ -218,6 +220,7 @@ def get_base_preferences(suggestions, cuisine, food_type):
                 }
 
 
+# Function to get suggestions for a specific base type
 def get_suggestions(suggestions, cuisine, food_type, base_type):
     while True:
         clear_screen()
@@ -270,19 +273,21 @@ Please select an option:
     )
 
 
+# Function to display the instructions
 def instructions():
     clear_screen()
     print(
         """
-        Food Finder App Instructions:
+Food Finder App Instructions:
 
-        1. Answer the following questions to receive food suggestions.
-        2. Select your preferred cuisine, food type, and dish.
-        3. Enjoy your personalized food recommendations!\n
+1. Answer the following questions to receive food suggestions.
+2. Select your preferred cuisine, food type, and dish.
+3. Enjoy your personalized food recommendations!\n
         """
     )
 
 
+# Function to handle the user instructions
 def handle_instructions():
     instructions()
     while True:
@@ -297,6 +302,7 @@ def handle_instructions():
             print("Invalid choice. Please enter 1 or 2.")
 
 
+# Function to start the app
 def start_app():
     clear_screen()
     intro()
@@ -319,6 +325,7 @@ def start_app():
             return
 
 
+# Function to run the main logic of the app
 def main():
     """Runs the main logics of the Food Finder app."""
     while True:
