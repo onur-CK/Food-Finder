@@ -99,7 +99,7 @@ def get_user_preferences(suggestions):
         base_preferences = get_base_preferences(suggestions, cuisine, food_type)
         
         clear_screen()  
-        print(f"\nHere are 3 suggestions for {base_preferences['base']}:\n ")
+        print(f"Here are 3 suggestions for {base_preferences['base']}:\n ")
         
         for i, suggestion in enumerate(base_preferences['suggestions'], 1):
             print(f"{i}. {suggestion}")
@@ -124,7 +124,7 @@ def get_base_preferences(suggestions, cuisine, food_type):
         base_types = suggestions[cuisine][food_type].keys()
         for i, base_type in enumerate(base_types, 1):
             print(f"{i}. {base_type}")
-        base_choice = get_choice(f"Enter your choice (1 to {len(base_types)}): ", range(1, len(base_types) + 1)) 
+        base_choice = get_choice(f"\nEnter your choice (1 to {len(base_types)}): ", range(1, len(base_types) + 1)) 
         
         selected_base = list(base_types)[base_choice - 1]
         return {"base": selected_base, "suggestions": get_suggestions(suggestions, cuisine, food_type, selected_base)}
@@ -133,11 +133,11 @@ def get_base_preferences(suggestions, cuisine, food_type):
 def get_suggestions(suggestions, cuisine, food_type, base_type):
     while True:
         clear_screen()
-        print(f"How would you like your {base_type}?")
+        print(f"How would you like your {base_type}?\n ")
         sub_categories = suggestions[cuisine][food_type][base_type].keys()
         for i, sub_category in enumerate(sub_categories, 1):
             print(f"{i}. {sub_category}")
-        sub_choice = get_choice(f"Enter your choice (1 to {len(sub_categories)}):\n ", range(1, len(sub_categories) + 1))
+        sub_choice = get_choice(f"\nEnter your choice (1 to {len(sub_categories)}):\n ", range(1, len(sub_categories) + 1))
         if sub_choice is not None:
             selected_sub_category = list(sub_categories)[sub_choice -1]
             return suggestions[cuisine][food_type][base_type][selected_sub_category]
