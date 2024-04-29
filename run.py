@@ -176,7 +176,9 @@ def get_user_preferences(suggestions):
             food_type_choice = get_choice(
                 "\nEnter your choice (1. Vegetarian / 2. Non-Vegetarian): ",
                 [1, 2])
-            food_type = "Vegetarian" if food_type_choice == 1 else "Non-Vegetarian"
+            food_type = ("Vegetarian"
+                         if food_type_choice == 1
+                         else "Non-Vegetarian")
             break
         base_preferences = get_base_preferences(
             suggestions, cuisine, food_type)
@@ -227,7 +229,9 @@ def get_suggestions(suggestions, cuisine, food_type, base_type):
         sub_choice = get_choice(prompt, range(1, len(sub_categories) + 1))
         if sub_choice is not None:
             selected_sub_category = list(sub_categories)[sub_choice - 1]
-            return suggestions[cuisine][food_type][base_type][selected_sub_category]
+            return (suggestions[cuisine]
+                    [food_type][base_type]
+                    [selected_sub_category])
 
 
 def get_food_preferences(suggestions):
@@ -334,6 +338,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-
-
