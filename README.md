@@ -70,7 +70,7 @@ The goal of this programm is to provide the user with a simple and easy way of f
 **As a user I want to**
 
 - be able to check the instructions when first loading the programm
-- check the instructions of the game in short and simple text
+- check the instructions of the app in short and simple text
 - be informed if my data input is not valid
 - be able to restart the app or not when after it's finished
 - be able to see several food subcategories as options
@@ -235,7 +235,7 @@ Ensuring all parts of the programm function as expected in all major browsers.
 | Expectation (As a user, I want to...)  | Result (As a user, I...)    |
 | :---------------------------------: | :------------------------------:|
 | be able to check the instructions when first loading the program | see the instructions when first loading the program |
-| check the instructions of the game in short and simple text | see the instructions with a very simple design |
+| check the instructions of the app in short and simple text | see the instructions with a very simple design |
 | be informed if my data input is not valid | see an error message after I input invalid data, telling me what data type is required |
 | be able to restart the app or not when after it's finished | can choose to restart the app after finishing |
 | be able to see several food subcategories as options | see several food categories as an option |
@@ -250,11 +250,11 @@ Ensuring all parts of the programm function as expected in all major browsers.
 
 To guarantee consistent line breaks, whitespaces and indentation, run.py was formatted by me completely manually by checking the erros by using:
 
-![CI Python Linter](https://pep8ci.herokuapp.com/)
+[CI Python Linter](https://pep8ci.herokuapp.com/)
 
-**Word not displaying fully when game won**
+**Bugs**
 
-- After choosing the Non-Vegetarian category proram displays chicken subcategory question instead of sea food when user press 1.
+- After choosing the Non-Vegetarian category app displays chicken subcategory question instead of sea food when user press 1.
 
 ![bug](assets/images/chicken-instead_of_sea_food_bug.PNG)
 
@@ -264,15 +264,17 @@ To guarantee consistent line breaks, whitespaces and indentation, run.py was for
 
 
 
+
 - Can't reach the food types to display next related question.
 
 ![bug](assets/images/key_error_bug.PNG)
 
 *Solution*:
 
-Fixed the list by making name changes to match the keys.
+Added changes to suggestions list to make it reachable by my functions.
 
 ![fix](assets/images/key_error_fix.PNG)
+
 
 
 
@@ -285,6 +287,19 @@ Fixed the list by making name changes to match the keys.
 Fixed the bug by deleting the second `clear_screen()` function
 
 ![fix](assets/images/display_error_fix.PNG)
+
+
+
+
+- Can't display error and moves to questions even if user press 2 for no.
+
+![bug](assets/images/no_error.PNG)
+
+*Solution*:
+
+Fixed the bug by adding exit() after 2 input.
+
+![fix](assets/images/no_error_fix.PNG)
 
 
 ### Unfixed Bugs
@@ -316,14 +331,17 @@ To deploy:
 
 - **Food List**
 
-[Foods](https://www.bbcgoodfood.com/)
-[Foods-2](https://www.taste.com.au/)
+    [Foods](https://www.bbcgoodfood.com/)
+
+    [Foods-2](https://www.taste.com.au/)
 
 I created my food suggestions list by using these two websites.
 
 - **Logo**:
 
-    [Text to ASCII Art Generator](https://patorjk.com/software/taag/#p=display&f=Graffiti&t=Type%20Something%20)
+I created my ASCII logo by using:
+
+[Text to ASCII Art Generator](https://patorjk.com/software/taag/#p=display&f=Graffiti&t=Type%20Something%20)
 
     
 ### Code
@@ -334,7 +352,7 @@ I created my food suggestions list by using these two websites.
 
 - **Food Finder**
 
-I used these tutorials to improve my understanding for;
+I used these tutorials to improve my Python understanding of;
 - creating lists of list,
 - arguments and parameters,
 - data types,
@@ -347,14 +365,13 @@ I used these tutorials to improve my understanding for;
 
 Didn't use any specific code by adopting from any tutorials or google.
 
-[Tutorial by Dave Gray](https://www.youtube.com/watch?v=qwAFL1597eM&t=14507s)
-[Tutorial by Caleb Curry](https://www.youtube.com/watch?v=i_ZEaE5vfE0)
-[Tutorial by Caleb Curry](https://www.youtube.com/watch?v=jE0nVl8iTFI&t=118s)
+- [Tutorial by Dave Gray](https://www.youtube.com/watch?v=qwAFL1597eM&t=14507s)
 
-- `clear_screen():`
+- [Tutorial by Caleb Curry](https://www.youtube.com/watch?v=i_ZEaE5vfE0)
 
-[DelftStack](https://www.delftstack.com/howto/python/python-clear-console/)
+- [Tutorial by Caleb Curry](https://www.youtube.com/watch?v=jE0nVl8iTFI&t=118s)
 
+- `clear_screen():` [DelftStack](https://www.delftstack.com/howto/python/python-clear-console/)
 
 - Am I Responsive 
 
