@@ -199,23 +199,20 @@ Food Finder App Instructions:
 """
 )
 
-def ask_if_user_ready():
-    while True:
-        user_ready = input("Are you ready to begin (1. Yes . 2. No): ")
-        if user_ready == "1":
-            return True
-        elif user_ready == "2":
-           clear_screen()
-           print("Thanks for checking the instructions. Have a good day!")
-           return False
-        else: 
-            print("Invalid choice. Please enter 1 or 2.")
-
 
 def handle_instructions():
     instructions()
-    user_ready = ask_if_user_ready()
-    return user_ready == "1"
+    while True:
+        user_ready = input("Are you ready to begin (1. Yes / 2. No): ").strip()
+        if user_ready == "1":
+            return True
+        elif user_ready == "2":
+            clear_screen()
+            print("Thanks for checking the instructions.")
+            return False
+        else:
+            print("Invalid choice. Please enter 1 or 2.")
+
 
 
 def start_app():
@@ -236,8 +233,8 @@ def start_app():
             print("Let's get started!\n ")
             get_user_preferences(suggestions)
         else: 
+            print("Thanks for using Food Finder. Have a good day!")
             return
-        
 
 def main():
     """Runs the main logics of the Food Finder app."""
