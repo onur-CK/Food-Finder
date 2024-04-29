@@ -291,7 +291,7 @@ Fixed the bug by deleting the second `clear_screen()` function
 
 
 
-- Can't display error and moves to questions even if user press 2 for no.
+- Can't quit the app and moves to questions even if user press 2 for no.
 
 ![bug](assets/images/no_error.PNG)
 
@@ -349,6 +349,9 @@ I created my ASCII logo by using:
 - **Template and Terminal**
 
     [Python Essentials Template](https://github.com/Code-Institute-Org/python-essentials-template) provided by Code Institute 
+
+    Readme Template;
+    [Hangman by Kay-ddggxh](https://github.com/Kay-ddggxh/CI-PP3_hangman?tab=readme-ov-file)
 
 - **Food Finder**
 
