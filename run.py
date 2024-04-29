@@ -64,7 +64,8 @@ suggestions = {
 def get_choice(prompt, options):
     """Get user choice from an options list."""
     while True:
-        choice = input(prompt).strip()
+        print(prompt)
+        choice = input().strip()
         if not choice:
             print("Invalid choice. Please enter a valid option.")
             continue
@@ -80,13 +81,9 @@ def get_user_preferences(suggestions):
         print("Select your preferred cuisine:\n ")
         print("1. Chinese")
         print("2. Turkish")
-        cuisine_choice = input("\nEnter your choice (1. Chinese / 2. Turkish): ").strip()
+        cuisine_choice = get_choice("\nEnter your choice (1. Chinese / 2. Turkish): ", [1, 2])
         
-        if cuisine_choice not in ("1", "2"):
-            print("Invalid choice. Please enter 1 or 2.")
-            continue
-        
-        cuisine = "Chinese" if cuisine_choice == "1" else "Turkish"
+        cuisine = "Chinese" if cuisine_choice == 1 else "Turkish"
 
         # Prompt for food type choice
         while True:
@@ -94,17 +91,9 @@ def get_user_preferences(suggestions):
             print("Select your preferred food type:\n ")
             print("1. Vegetarian")
             print("2. Non-Vegetarian")
-            food_type_choice = input("\nEnter your choice (1. Vegetarian / 2. Non-Vegetarian): ").strip()
+            food_type_choice = get_choice("\nEnter your choice (1. Vegetarian / 2. Non-Vegetarian): ", [1, 2])
             
-            if not food_type_choice:
-                print("Invalid choice. Please enter 1 or 2.")
-                continue
-
-            if food_type_choice not in ("1", "2"):
-                print("Invalid choice. Please enter 1 or 2.")
-                continue
-            
-            food_type = "Vegetarian" if food_type_choice == "1" else "Non-Vegetarian"
+            food_type = "Vegetarian" if food_type_choice == 1 else "Non-Vegetarian"
             break
 
         base_preferences = get_base_preferences(suggestions, cuisine, food_type)
@@ -117,20 +106,17 @@ def get_user_preferences(suggestions):
         
         # Ask if the user wants to try again
         while True:
-            try_again = input("\nWould you like to try again? (1. Yes / 2. No): ").strip()
-            
-            if try_again == "2":
+            try_again = get_choice("\nWould you like to try again? (1. Yes / 2. No): ", [1, 2])
+            if try_again == 2:
                 clear_screen()
                 print("Thanks for using Food Finder. Have a good day!")
                 exit()
-            elif try_again == "1":
-                break  # Exit the loop and restart the process
+            elif try_again == 1:
+                break
             else:
                 print("Invalid choice. Please enter 1 or 2.")
 
        
-
-
 def get_base_preferences(suggestions, cuisine, food_type):
     while True:
         clear_screen()
@@ -138,7 +124,7 @@ def get_base_preferences(suggestions, cuisine, food_type):
         base_types = suggestions[cuisine][food_type].keys()
         for i, base_type in enumerate(base_types, 1):
             print(f"{i}. {base_type}")
-        base_choice = get_choice(f"Enter your choice (1 or {len(base_types)}): ", range(1, len(base_types) + 1)) 
+        base_choice = get_choice(f"Enter your choice (1 to {len(base_types)}): ", range(1, len(base_types) + 1)) 
         
         selected_base = list(base_types)[base_choice - 1]
         return {"base": selected_base, "suggestions": get_suggestions(suggestions, cuisine, food_type, selected_base)}
@@ -151,7 +137,7 @@ def get_suggestions(suggestions, cuisine, food_type, base_type):
         sub_categories = suggestions[cuisine][food_type][base_type].keys()
         for i, sub_category in enumerate(sub_categories, 1):
             print(f"{i}. {sub_category}")
-        sub_choice = get_choice(f"Enter your choice (1 or {len(sub_categories)}):\n ", range(1, len(sub_categories) + 1))
+        sub_choice = get_choice(f"Enter your choice (1 to {len(sub_categories)}):\n ", range(1, len(sub_categories) + 1))
         if sub_choice is not None:
             selected_sub_category = list(sub_categories)[sub_choice -1]
             return suggestions[cuisine][food_type][base_type][selected_sub_category]
